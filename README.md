@@ -1,21 +1,20 @@
-# 10th-template
+# CIA : Causal Intent Agent
 
 [![PseudoLab](https://img.shields.io/badge/PseudoLab-S10-3776AB)](https://pseudo-lab.com) [![Discord Community](https://img.shields.io/badge/Discord-BF40BF)](https://discord.gg/EPurkHVtp2)
 
 ## 🌟 프로젝트 목표 (Project Vision)
-_"이론에서 실전까지, 함께 성장하는 AI 실험실"_  
-- Graph-based RAG 스터디 및 프로젝트
-- 개인 성장과 집단 지혜의 시너지 창출
-- 오픈소스 정신을 바탕으로 한 지식 공유 문화
-- 실패를 성공의 디딤돌로 만드는 실험적 접근
+_"Causal Intent Agent: 데이터 속 숨겨진 취향을 분석하여 개인화된 Agent 만들기"_  
+- 추천시스템에서 발생하는 다양한 데이터 편향을 인과추론 기법으로 해결
+- 기존 추천시스템과 함께 작동할 수 있는 모듈형 CIA 구축
+- 오픈소스 프레임워크 개발로 Github 퀄리티 높이기
 
 
 ## 🧑 역동적인 팀 소개 (Dynamic Team)
 
 | 역할          | 이름 |  기술 스택 배지                                                                 | 주요 관심 분야                          |
 |---------------|------|-----------------------------------------------------------------------|----------------------------------------|
-| **Project Manager** | 김찬란 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 생성형 AI/추천 시스템 최적화             |
-| **Member** | 레오나르도 다빈치 | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | 데이터 파이프라인 설계                  |
+| **Project Manager** | 이상현 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / 인과추론 / Agentic AI             |
+| **Member** | 앤드류 응 | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
 
 
 ## 🚀 프로젝트 로드맵 (Project Roadmap)
@@ -23,12 +22,12 @@ _"이론에서 실전까지, 함께 성장하는 AI 실험실"_
 gantt
     title 2025 AI 프로젝트 여정
     section 핵심 마일스톤
-    이론 연구       :a1, 2025-09-01, 30d
-    MVP 개발        :a2, after a1, 45d
-    프로덕션 적용    :a3, after a2, 30d
+    이론 연구       :a1, 2025-02-24, 30d
+    Agent 개발        :a2, after a1, 30d
+    데모 통합 페이지 구현    :a3, after a2, 20d
+    수도콘 준비 및 회고        : a4, after a3, 20d
     section 부가 활동
-    기술 세미나     :2025-10-15, 7d
-    해커톤         :2025-11-20, 3d
+    PseudoCon2025     :2025-05-17, 1d
 ```
 
 
@@ -45,41 +44,45 @@ class CollaborationFramework:
         }
     
     def workflow(self):
-        return """주간 사이클:
-        1️⃣ 월요일: 스프린트 플래닝 (Notion 타임라인 공유)
-        2️⃣ 수요일: 코드 리뷰 세션 (Live Share)
-        3️⃣ 금요일: 데모데이 (실제 적용 사례 발표)"""
+        return """스터디 사이클:
+        1️⃣ 근황 토크: 주간 이슈 및 뉴스 공유 
+        2️⃣ 논문/개발 리뷰: 논문(1Q)/개발(2Q) 리뷰 세션 (Live Share)
+        3️⃣ Todo: 계획 공유"""
 ```
 
 
 ## 📈 성과 지표 (Achievement Metrics)
-**2024 주요 KPI**  
+**2025 주요 KPI**  
 | 지표                     | 목표치 | 현재 달성률 |
 |--------------------------|--------|-------------|
-| 커밋 수                  | 1,200  | 83%         |
-| 이슈 해결률              | 95%    | 89%         | 
-| 기술 블로그 게시물       | 24편   | 15편        |
-| 오픈소스 기여도          | 8회    | 5회         |
+| 커밋 수                  | 각자 매주 1회  | 0%         |
 
 
 ## 💻 주차별 활동 (Activity History)
 
 | 날짜 | 내용 | 발표자 | 
 | -------- | -------- | ---- |
-| 2025/02/ | OT       |      |
-| 2025/02/ |  Part 1. | 미정 | 
-| 2025/02/ |  Part 2. | 미정 | 
-| 2025/02/ |  Part 3. | 미정 | 
-| 2025/03/ |  Part 4. | 미정 | 
-| 2025/03/ |  Part 5. | 미정 | 
+| 2025/02/25 |  OT      | ALL |
+| 2025/03/04 |  논문 리뷰 | 상현, OO | 
+| 2025/03/11 |  논문 리뷰 | OO, OO | 
+| 2025/03/18 |  논문 리뷰 | OO, OO | 
+| 2025/03/25 |  개발 공유 | ALL | 
+| 2025/04/01 |  개발 공유 | ALL | 
+| 2025/04/08 |  개발 공유 | ALL | 
+| 2025/04/15 |  개발 공유 | ALL | 
+| 2025/04/22 |  개발 리뷰 | ALL | 
+| 2025/04/29 |  데모 병합 | ALL | 
+| 2025/05/06 |  각자 개발 | ALL | 
+| 2025/05/13 |  수콘 준비 | ALL | 
+| 2025/05/20 |  회고 개선 | ALL |
+| 2025/05/27 |  회고 개선 | ALL | 
+| 2025/06/03 |  회고 개선 | ALL | 
+| 2025/06/10 |  회고 개선 | ALL | 
 
 
 
 ## 💡 학습 자원 (Learning Resources)
-**우리가 만든 지식 허브**  
-- [AI Playbook](https://github.com/your-org/ai-playbook): 150+ 페이지의 실전 가이드
-- [MLOps Pipeline Template](https://github.com/your-org/mlops-template): 재사용 가능한 인프라 코드
-- [Failure Journal](https://your-org.github.io/failure-journal): 50+개의 실패 사례 분석 [31][34]
+- [Causal Recommendation Tutorial](https://causalrec.github.io/file/SIGIR23_new-causal%20recommendation_0723_all.pdf): 인과추론 추천시스템 튜토리얼 강의자료(참고용)
 
 
 ## 🌱 참여 안내 (How to Engage)
@@ -87,6 +90,6 @@ class CollaborationFramework:
 - 링크 (준비중)
 
 **누구나 청강을 통해 모임을 참여하실 수 있습니다.**  
-1. 특별한 신청 없이 정기 모임 시간에 맞추어 디스코드 #Room-GH 채널로 입장
+1. 특별한 신청 없이 정기 모임 시간에 맞추어 디스코드 #Room-?? 채널로 입장
 2. Magical Week 중 행사에 참가
 3. Pseudo Lab 행사에서 만나기
