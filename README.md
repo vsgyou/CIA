@@ -1,4 +1,4 @@
-# CIA : Causal Intent Agent
+# CIA: Causal Intent Agent
 
 [![PseudoLab](https://img.shields.io/badge/PseudoLab-S10-3776AB)](https://pseudo-lab.com) [![Discord Community](https://img.shields.io/badge/Discord-BF40BF)](https://discord.gg/EPurkHVtp2)
 
