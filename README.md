@@ -1,6 +1,25 @@
-# CIA: Causal Intent Agent
+<h1 align="center"> CIA: Causal Intent Agent</h1>
 
-[![PseudoLab](https://img.shields.io/badge/PseudoLab-S10-3776AB)](https://pseudo-lab.com) [![Discord Community](https://img.shields.io/badge/Discord-BF40BF)](https://discord.gg/EPurkHVtp2)
+<div align="center">
+<a href="https://pseudo-lab.com"><img src="https://img.shields.io/badge/PseudoLab-S10-3776AB" alt="PseudoLab"/></a>
+<a href="https://discord.gg/EPurkHVtp2"><img src="https://img.shields.io/badge/Discord-BF40BF" alt="Discord Community"/></a>
+<a href="https://github.com/Pseudo-Lab/EfficientML/stargazers"><img src="https://img.shields.io/github/stars/Pseudo-Lab/CIA" alt="Stars Badge"/></a>
+<a href="https://github.com/Pseudo-Lab/EfficientML/network/members"><img src="https://img.shields.io/github/forks/Pseudo-Lab/CIA" alt="Forks Badge"/></a>
+<a href="https://github.com/Pseudo-Lab/EfficientML/pulls"><img src="https://img.shields.io/github/issues-pr/Pseudo-Lab/CIA" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/Pseudo-Lab/EfficientML/issues"><img src="https://img.shields.io/github/issues/Pseudo-Lab/CIA" alt="Issues Badge"/></a>
+<a href="https://github.com/Pseudo-Lab/EfficientML/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Pseudo-Lab/CIA?color=2b9348"></a>
+<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fpseudo-lab%2FCIA&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+</div>
+<br>
+
+<!-- sheilds: https://shields.io/ -->
+<!-- hits badge: https://hits.seeyoufarm.com/ -->
+
+사람들이 콘텐츠를 소비하는 이유는 다양합니다. 누군가는 단순한 재미를 위해 영상을 시청하고, 누군가는 특정 정보를 찾기 위해 검색하며, 또 다른 누군가는 트렌드를 따라가기 위해 클릭합니다. 하지만 이러한 의도(intent)는 데이터에 명확하게 기록되지 않습니다. 같은 콘텐츠를 시청했다고 해서 동일한 이유로 소비한 것은 아니기 때문입니다. 기존의 추천 및 검색 시스템은 단순한 클릭 이력과 패턴을 기반으로 작동하지만, Causal Intent Agent는 한 걸음 더 나아갑니다. 사용자의 소비 이유를 인과추론(causal inference)을 활용하여 분석함으로써, 단순한 행동 데이터가 아닌 진짜 의도를 추론합니다.<br/>
+이 스터디에서는 "고객이 왜 이 콘텐츠를 선택했는가?"라는 근본적인 질문을 해결하고자 합니다. 이를 통해 추천 시스템과 검색 엔진이 단순한 과거 패턴을 따르는 것이 아니라, 사용자의 진짜 목적을 이해하고 예측하는 차세대 AI 에이전트를 개발하는 것이 목표입니다.<br/>
+<div align="center">
+<img src = "https://sanghyeon-recsys.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0762d424-f182-4525-a36d-7dfce0af78dc%2F5c51bc2c-b938-4d65-82b7-8775cae18ff2%2FUntitled.png?table=block&id=3a556962-bce5-4b88-b881-f3509c3e8b8b&spaceId=0762d424-f182-4525-a36d-7dfce0af78dc&width=1920&userId=&cache=v2" width="800px;"/> <br/>
+</div>
 
 ## 🌟 프로젝트 목표 (Project Vision)
 _"Causal Intent Agent: 데이터 속 숨겨진 취향을 분석하여 개인화된 Agent 만들기"_  
@@ -14,7 +33,7 @@ _"Causal Intent Agent: 데이터 속 숨겨진 취향을 분석하여 개인화�
 | 역할          | 이름 |  기술 스택 배지                                                                 | 주요 관심 분야                          |
 |---------------|------|-----------------------------------------------------------------------|----------------------------------------|
 | **Project Manager** | 이상현 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / 인과추론 / Agentic AI             |
-| **Member** | 앤드류 응 | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
+| **Member** | 앤드류 응? | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
 
 
 ## 🚀 프로젝트 로드맵 (Project Roadmap)
@@ -22,7 +41,7 @@ _"Causal Intent Agent: 데이터 속 숨겨진 취향을 분석하여 개인화�
 gantt
     title 2025 AI 프로젝트 여정
     section 핵심 마일스톤
-    이론 연구       :a1, 2025-02-24, 30d
+    이론 연구       :a1, 2025-03-02, 30d
     Agent 개발        :a2, after a1, 30d
     데모 통합 페이지 구현    :a3, after a2, 20d
     수도콘 준비 및 회고        : a4, after a3, 20d
@@ -62,22 +81,21 @@ class CollaborationFramework:
 
 | 날짜 | 내용 | 발표자 | 
 | -------- | -------- | ---- |
-| 2025/02/25 |  OT      | ALL |
-| 2025/03/04 |  논문 리뷰 | 상현, OO | 
-| 2025/03/11 |  논문 리뷰 | OO, OO | 
+| 2025/03/04 |  OT      | ALL, 상현 | 
+| 2025/03/11 |  논문 리뷰 | 00, OO | 
 | 2025/03/18 |  논문 리뷰 | OO, OO | 
-| 2025/03/25 |  개발 공유 | ALL | 
-| 2025/04/01 |  개발 공유 | ALL | 
-| 2025/04/08 |  개발 공유 | ALL | 
-| 2025/04/15 |  개발 공유 | ALL | 
+| 2025/03/25 |  개발 진행 사항 공유 | ALL | 
+| 2025/04/01 |  개발 진행 사항 공유 | ALL | 
+| 2025/04/08 |  개발 진행 사항 공유 | ALL | 
+| 2025/04/15 |  개발 진행 사항 공유 | ALL | 
 | 2025/04/22 |  개발 리뷰 | ALL | 
 | 2025/04/29 |  데모 병합 | ALL | 
-| 2025/05/06 |  각자 개발 | ALL | 
+| 2025/05/06 |  모같코    | ALL | 
 | 2025/05/13 |  수콘 준비 | ALL | 
-| 2025/05/20 |  회고 개선 | ALL |
-| 2025/05/27 |  회고 개선 | ALL | 
-| 2025/06/03 |  회고 개선 | ALL | 
-| 2025/06/10 |  회고 개선 | ALL | 
+| 2025/05/20 |  회고 및 개선 | ALL |
+| 2025/05/27 |  회고 및 개선 | ALL | 
+| 2025/06/03 |  회고 및 개선 | ALL | 
+| 2025/06/10 |  회고 및 개선 | ALL | 
 
 
 
@@ -86,8 +104,24 @@ class CollaborationFramework:
 
 
 ## 🌱 참여 안내 (How to Engage)
-**팀원으로 참여하시려면 러너 모집 기간에 신청해주세요.**  
-- 링크 (준비중)
+### 지원 시 유의사항
+- **3/2에 러너 발표 예정이므로, 해당 날짜에 이메일(스팸 게시판 포함)과 Discord를 꼭 확인해 카톡방에 입장해, 3/4의 첫 모임에 지장이 가지 않도록 해야 함**
+
+### 시간
+- 온라인: Room-YB, 매주 화요일 오후 9시
+- 일부 주간은 오프라인(강남) 모임 예정, 화요일 저녁
+- **첫 모임(3/4)은 오프라인 진행, 오후 7시 예정**
+
+### ✔️ 참여 조건
+- 추천시스템 개발 경험이 있으신 분 (추천시스템에 필요한 인과추론을 공부하는 스터디입니다!)
+- **3개월** 동안 꾸준히 참여할 수 있는 **의지**  
+- **주 4시간** 정도의 학습 및 실습 시간 확보해야 함
+
+### 지원서 작성 시 꼭 포함할 내용
+1. **스터디 지원 동기**  
+2. **이번에 다룰 4개의 경량화 기술 중 가장 관심있는 기술**  
+3. **자신이 스터디 참여 조건에 만족하는지의 여부**  
+
 
 **누구나 청강을 통해 모임을 참여하실 수 있습니다.**  
 1. 특별한 신청 없이 정기 모임 시간에 맞추어 디스코드 #Room-?? 채널로 입장
