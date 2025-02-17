@@ -15,8 +15,14 @@
 <!-- sheilds: https://shields.io/ -->
 <!-- hits badge: https://hits.seeyoufarm.com/ -->
 
-사람들이 콘텐츠를 소비하는 이유는 다양합니다. 누군가는 단순한 재미를 위해 영상을 시청하고, 누군가는 특정 정보를 찾기 위해 검색하며, 또 다른 누군가는 트렌드를 따라가기 위해 클릭합니다. 하지만 이러한 의도(intent)는 데이터에 명확하게 기록되지 않습니다. 같은 콘텐츠를 시청했다고 해서 동일한 이유로 소비한 것은 아니기 때문입니다. 기존의 추천 및 검색 시스템은 단순한 클릭 이력과 패턴을 기반으로 작동하지만, Causal Intent Agent는 한 걸음 더 나아갑니다. 사용자의 소비 이유를 인과추론(causal inference)을 활용하여 분석함으로써, 단순한 행동 데이터가 아닌 진짜 의도를 추론합니다.<br/>
-이 스터디에서는 "고객이 왜 이 콘텐츠를 선택했는가?"라는 근본적인 질문을 해결하고자 합니다. 이를 통해 추천 시스템과 검색 엔진이 단순한 과거 패턴을 따르는 것이 아니라, 사용자의 진짜 목적을 이해하고 예측하는 차세대 AI 에이전트를 개발하는 것이 목표입니다.<br/>
+사람들이 콘텐츠를 소비하는 이유는 다양합니다. <br/>
+누군가는 단순한 재미를 위해 영상을 시청하고, 누군가는 특정 정보를 찾기 위해 검색하며, 또 다른 누군가는 트렌드를 따라가기 위해 클릭합니다. <br/>
+하지만 이러한 의도(intent)는 데이터에 명확하게 기록되지 않습니다. 같은 콘텐츠를 시청했다고 해서 동일한 이유로 소비한 것은 아니기 때문입니다. <br/>
+
+기존의 추천 및 검색 시스템은 단순한 클릭 이력과 패턴을 기반으로 작동하지만, Causal Intent Agent는 한 걸음 더 나아갑니다. <br/>
+사용자의 소비 이유를 인과추론(causal inference)을 활용하여 분석함으로써, 단순한 행동 데이터가 아닌 진짜 의도를 추론합니다.<br/>
+이 스터디에서는 "고객이 왜 이 콘텐츠를 선택했는가?"라는 근본적인 질문을 해결하고자 합니다. <br/>
+이를 통해 추천 시스템과 검색 엔진이 단순한 과거 패턴을 따르는 것이 아니라, 사용자의 진짜 목적을 이해하고 예측하는 차세대 AI 에이전트를 개발하는 것이 목표입니다.<br/>
 <div align="center">
 <img src = "https://sanghyeon-recsys.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0762d424-f182-4525-a36d-7dfce0af78dc%2F5c51bc2c-b938-4d65-82b7-8775cae18ff2%2FUntitled.png?table=block&id=3a556962-bce5-4b88-b881-f3509c3e8b8b&spaceId=0762d424-f182-4525-a36d-7dfce0af78dc&width=1920&userId=&cache=v2" width="800px;"/> <br/>
 </div>
@@ -33,7 +39,11 @@ _"Causal Intent Agent: 데이터 속 숨겨진 취향을 분석하여 개인화�
 | 역할          | 이름 |  기술 스택 배지                                                                 | 주요 관심 분야                          |
 |---------------|------|-----------------------------------------------------------------------|----------------------------------------|
 | **Project Manager** | 이상현 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / 인과추론 / Agentic AI             |
-| **Member** | 앤드류 응? | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
+| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
+| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
+| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
+| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
+| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | AI                  |
 
 
 ## 🚀 프로젝트 로드맵 (Project Roadmap)
@@ -109,7 +119,7 @@ class CollaborationFramework:
 - **3/2에 러너 발표 예정이므로, 해당 날짜에 이메일(스팸 게시판 포함)과 Discord를 꼭 확인해 카톡방에 입장해, 3/4의 첫 모임에 지장이 가지 않도록 해야 함**
 
 ### 시간
-- 온라인: Room-YB, 매주 화요일 오후 9시
+- 온라인: Room-DH, 매주 화요일 오후 9시
 - 일부 주간은 오프라인(강남) 모임 예정, 화요일 저녁
 - **첫 모임(3/4)은 오프라인 진행, 오후 7시 예정**
 
