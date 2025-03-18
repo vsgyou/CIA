@@ -112,6 +112,7 @@ class CollaborationFramework:
 ## 💡 학습 자원 (Learning Resources)
 - [Practical Implementation of Causal Inference for Advancing Recommender Systems](https://docs.google.com/presentation/d/1Bbyyf1NYXFzzGVr-jKNdWelkLDmT2LgQhbK32_5f9JI/edit?usp=sharing): 인과추론 학회 발표자료
 - [Causal Recommendation Tutorial](https://causalrec.github.io/file/SIGIR23_new-causal%20recommendation_0723_all.pdf): 인과추론 추천시스템 튜토리얼 강의자료(참고용)
+- Discussion 주차별 댓글에 발표자료 업로드 중
 
 
 ## 🌱 참여 안내 (How to Engage)
