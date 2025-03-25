@@ -36,15 +36,15 @@ _"Causal Intent Agent: 데이터 속 숨겨진 취향을 분석하여 개인화�
 
 ## 🧑 역동적인 팀 소개 (Dynamic Team)
 
-| 역할          | 이름 |  기술 스택 배지                                                                 | 주요 관심 분야                          |
-|---------------|------|-----------------------------------------------------------------------|----------------------------------------|
-| **Project Manager** | 이상현 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / 인과추론 / Agentic AI             |
-| **Member** | 황영산 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / A/B test / MLOps / 마케팅                  |
-| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | -                  |
-| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | -                  |
-| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | -                  |
-| **Member** | - | ![SQL](https://img.shields.io/badge/SQL-Advanced-003B57) ![BigQuery](https://img.shields.io/badge/BigQuery-4285F4) | -                  |
-
+| 역할          | 이름 |  기술 스택 배지                                                                 | 주요 관심 분야                          | 개인페이지                          |
+|---------------|------|-----------------------------------------------------------------------|----------------------------------------|----------------------------------------|
+| **Project Manager** | 이상현 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / 인과추론 / Agentic AI             | https://www.linkedin.com/in/sanghyeon/ |
+| **Member** | 김상원 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 개인화 추천 / 실험 설계                  |
+| **Member** | 김지호 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 자연어처리 / RAG / 추천시스템 / LLM / Ops                | https://totravelhopefully.tistory.com/ |
+| **Member** | 유경민 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | LLM / Data Augumentation / Cross Domain                  |
+| **Member** | 장원혁 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 음성인식 / Multi-modal / LLM                |
+| **Member** | 정지운 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 통계학                  | https://www.linkedin.com/in/%EC%A7%80%EC%9A%B4-%EC%A0%95-b60725252/ |
+| **Member** | 황영산 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / A/B test / MLOps / 마케팅                  | https://www.linkedin.com/in/yeongsan-hwang-23a10826a/ |
 
 ## 🚀 프로젝트 로드맵 (Project Roadmap)
 ```mermaid
