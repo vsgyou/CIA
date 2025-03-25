@@ -41,8 +41,8 @@ _"Causal Intent Agent: 데이터 속 숨겨진 취향을 분석하여 개인화�
 | **Project Manager** | 이상현 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / 인과추론 / Agentic AI             | https://www.linkedin.com/in/sanghyeon/ |
 | **Member** | 김상원 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 개인화 추천 / 실험 설계                  |
 | **Member** | 김지호 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 자연어처리 / RAG / 추천시스템 / LLM / Ops                | https://totravelhopefully.tistory.com/ |
-| **Member** | 유경민 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | LLM / Data Augumentation / Cross Domain                  |
-| **Member** | 장원혁 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 음성인식 / Multi-modal / LLM                |
+| **Member** | 유경민 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | LLM / Data Augumentation / Cross Domain | |
+| **Member** | 장원혁 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 음성인식 / Multi-modal / LLM                | https://www.linkedin.com/in/wonhyuk-jang-44a941b4/ |
 | **Member** | 정지운 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 통계학                  | https://www.linkedin.com/in/%EC%A7%80%EC%9A%B4-%EC%A0%95-b60725252/ |
 | **Member** | 황영산 | ![Python](https://img.shields.io/badge/Python-Expert-3776AB) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C) | 추천 시스템 / A/B test / MLOps / 마케팅                  | https://www.linkedin.com/in/yeongsan-hwang-23a10826a/ |
 
