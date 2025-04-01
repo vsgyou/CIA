@@ -21,8 +21,9 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
       - **Train 데이터**: 유저 290명, 아이템 300개, 6960개의 상호작용 데이터
       - **Test 데이터**: 유저 290명, 아이템 300개, 4640개의 상호작용 데이터
 - #### 코드 구현
-   논문에서 제안한 방식 구현 (Counterfactual sampling)
-
+  논문에서 제안한 방식 구현 (Counterfactual sampling)
+  
+  **CCL 손실함수(Lambda) 값에 따른 성능 비교**
   | Metric / Lambda | ndcg@5(↑) | ndcg@10(↑) | Gini Index(↓) | Test MSE(↓) |
   | --- | --- | --- | --- | --- |
   | 0.5 | 0.6095 | 0.6847 | 0.3483 | 0.2665 |
