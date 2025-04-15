@@ -65,8 +65,9 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
 
     - 전체적으로, NCF 모델을 통한 학습의 결과가 좋은 성능을 보임
 
-  - ## Movielens 데이터로의 실험 추가
+  - ## Movielens-100K 데이터로의 실험 추가
       Coat 데이터는 랜덤한 상황을 가정한 test셋을 구성하였지만, 랜덤하지 않은 데이터에서의 결과 확인
+      Movielens-100K 데이터는 유저당 10개의 아이템과 상호작용한 test셋으로 구성되어 있음
 
       | Metrics        | MF      | MF_CF   | MF_pop  | NCF     | NCF_CF  | NCF_pop  |
       |----------------|---------|---------|---------|---------|---------|---------|
