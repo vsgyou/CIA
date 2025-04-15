@@ -79,23 +79,25 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
       | Global Utility | 0.9066  | 0.9056  | 0.9090  | 0.9051  | 0.9051  | 0.9085  |
 ---
 ### 진행현황(2025.04.15)
-  ### 실험 결과 시각화
+### 실험 결과 시각화
 
-  - 유저의 성향에 따른 추천된 아이템의 인기도 비교
+- 유저의 성향에 따른 추천된 아이템의 인기도 비교
 
-    - 유저가 상호작용한 아이템의 평균 인기도가 가장 높은 20명의 유저(Top 20 User)    
-    - 유저가 상호작용한 아이템의 평균 인기도가 가장 낮은 20명의 유저(Low 20 User)
-      
-  - Coat
+  - 유저가 상호작용한 아이템의 평균 인기도가 가장 높은 20명의 유저(Top 20 User)    
+  - 유저가 상호작용한 아이템의 평균 인기도가 가장 낮은 20명의 유저(Low 20 User)
+    
+- Coat
+  
   <img src = "https://github.com/user-attachments/assets/6f3e92ab-7ccd-43ae-ac53-6c5d3d904b10" alt="image" width = "600" />
-  
-  - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.4995
-  - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.2290
 
-  - Movielens
-  <img src = "https://github.com/user-attachments/assets/ea71cbc3-6e1f-47d5-93a7-805d82f92028" alt="image" width = "600" />
+    - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.4995
+    - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.2290
+
+- Movielens
   
-  - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.7119
-  - Train 데이터에서 Low 20 User들이 상호작용한 아이템들의 평균 인기도는 0.3564
+  <img src = "https://github.com/user-attachments/assets/ea71cbc3-6e1f-47d5-93a7-805d82f92028" alt="image" width = "600" />
+
+    - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.7119
+    - Train 데이터에서 Low 20 User들이 상호작용한 아이템들의 평균 인기도는 0.3564
 
 
