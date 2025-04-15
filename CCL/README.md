@@ -84,9 +84,12 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
   - 유저의 성향에 따른 추천된 아이템의 인기도 비교
 
     - 유저가 상호작용한 아이템의 평균 인기도가 가장 높은 20명의 유저(Top 20 User)
+      
       - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.7119
       - Train 데이터에서 Low 20 User들이 상호작용한 아이템들의 평균 인기도는 0.3564
+        
     - 유저가 상호작용한 아이템의 평균 인기도가 가장 낮은 20명의 유저(Low 20 User)
+      
       - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.4995
       - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.2290
   - Coat
