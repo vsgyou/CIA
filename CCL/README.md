@@ -89,13 +89,13 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
   - Coat
   <img src = "https://github.com/user-attachments/assets/6f3e92ab-7ccd-43ae-ac53-6c5d3d904b10" alt="image" width = "600" />
   
-    - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.4995
-    - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.2290
+  - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.4995
+  - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.2290
 
   - Movielens
   <img src = "https://github.com/user-attachments/assets/ea71cbc3-6e1f-47d5-93a7-805d82f92028" alt="image" width = "600" />
   
-    - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.7119
-    - Train 데이터에서 Low 20 User들이 상호작용한 아이템들의 평균 인기도는 0.3564
+  - Train 데이터에서 Top 20 User들이 상호작용한 아이템들의 평균 인기도는 0.7119
+  - Train 데이터에서 Low 20 User들이 상호작용한 아이템들의 평균 인기도는 0.3564
 
 
