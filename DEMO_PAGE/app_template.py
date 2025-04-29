@@ -5,6 +5,10 @@ from pages.page3_inference import page3_ui
 from pages.page4_paper_viz import page4_ui
 from pages.page5_embedding_viz import page5_ui
 from pages.page6_abt import page6_ui
+import pages.page1_agent4rec as a4r
+
+a4r_path = "agent4rec_simulation_result_all_300_5_4_new_trait.csv"
+a4r_df, a4r_policy_list = a4r.load_csv(a4r_path)
 
 
 def profile_box():
@@ -73,8 +77,8 @@ with gr.Blocks() as demo:
             **💡 지원:** Pseudo Lab : a non-profit community that aim to gather people interested in DS, ML, AI.
             """)
 
-            with gr.Tab("1. 사용자 의도 챗봇"):
-                page1_ui()
+            with gr.Tab("1. AGENT4REC"):
+                a4r.page1_agent4rec_ui(a4r_df,a4r_policy_list)
             with gr.Tab("2. 편향 시각화"):
                 page2_ui()
             with gr.Tab("3. 인과 추론 예시"):
