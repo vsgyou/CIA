@@ -8,8 +8,8 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
 | 2025/04/01 | 논문 구현 및 분석 | 
 | 2025/04/08 | 샘플링 방법 탐구, 추가 데이터로 실험 | 
 | 2025/04/15 | 결정된 샘플링 방법 적용 후 성능 평가, 시각화로 결과 입증 | 
-| 2025/04/22 | |
-| 2025/04/29 | | 
+| 2025/04/22 | Gradio 대시보드 개발|
+| 2025/04/29 | Gradio 대시보드 개발| 
 | 2025/05/06 | |
 | 2025/05/13 | | 
 | 2025/05/20 | |
@@ -33,8 +33,8 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
   | 1.5 | 0.6102 | 0.6870 | 0.3310 | 0.2665 |
 
 - ##### 문제점
-  1. 논문에서 제안한 방식의 성능이 간단한 MF 모델보다 낮음.
-  2. 인기도 기반 샘플링 방법은 아이템 별로 인기도를 계산해 차이가 가장 큰 아이템을 샘플로 사용 → 대부분 동일한 아이템을 추출하는 문제 발생.
+  - 논문에서 제안한 방식의 성능이 간단한 MF 모델보다 낮음.
+  - 인기도 기반 샘플링 방법은 아이템 별로 인기도를 계산해 차이가 가장 큰 아이템을 샘플로 사용 → 대부분 동일한 아이템을 추출하는 문제 발생.
  
   
 - #### 이를 대체하기 위한 간단한 실험 방법
@@ -71,12 +71,12 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
     
       | Metrics        | MF      | MF_CF   | MF_pop  | NCF     | NCF_CF  | NCF_pop  |
       |----------------|---------|---------|---------|---------|---------|---------|
-      | Test MSE       | 0.1651  | 0.1671  | 0.1672  | 0.1564  | -       | 0.1571  |
-      | Test AUC       | 0.7507  | 0.7268  | 0.7291  | 0.7801  | -       | 0.7830  |
-      | NDCG@5         | -       | -       | -       | 0.9536  | -       | 0.9487  |
-      | NDCG@10        | 0.8791  | 0.9367  | 0.9378  | 0.9378  | -       | 0.9351  |
-      | Gini Index     | 0.0761  | 0.0783  | 0.0736  | 0.0765  | -       | 0.0749  |
-      | Global Utility | 0.9066  | 0.9056  | 0.9090  | 0.9051  | -       | 0.9085  |
+      | Test MSE       | 0.1651  | 0.1671  | 0.1672  | 0.1568  | 0.1564  | 0.1571  |
+      | Test AUC       | 0.7507  | 0.7268  | 0.7291  | 0.7864  | 0.7801  | 0.7830  |
+      | NDCG@5         | 0.9338  | 0.9367  | 0.9323  | 0.9536  | 0.9487  | 0.9487  |
+      | NDCG@10        | 0.8791  | 0.9367  | 0.9378  | 0.9378  | 0.9351  | 0.9351  |
+      | Gini Index     | 0.0761  | 0.0783  | 0.0736  | 0.0765  | 0.0765  | 0.0749  |
+      | Global Utility | 0.9066  | 0.9056  | 0.9020  | 0.9090  | 0.9051  | 0.9085  |
 ---
 ### 진행현황(2025.04.15)
   ### 실험 결과 시각화
@@ -85,12 +85,39 @@ Contrastive Counterfactual Learning for Causality-aware Interpretable Recommende
     
     - 1. 유저가 상호작용한 아이템의 평균 인기도가 가장 높은 20명의 유저(Top 20 User)
     - 2. 유저가 상호작용한 아이템의 평균 인기도가 가장 낮은 20명의 유저(Low 20 User)
+         
   - Coat
     
+    <img src = "https://github.com/user-attachments/assets/60a60ff3-81f0-4ab5-be84-5886ca9cf78a" alt="image" width = "600" />
   - Movielens
-  <img src = "https://github.com/user-attachments/assets/ea71cbc3-6e1f-47d5-93a7-805d82f92028" alt="image" width = "600" />
+    
+    <img src = "https://github.com/user-attachments/assets/ea71cbc3-6e1f-47d5-93a7-805d82f92028" alt="image" width = "600" />
+
+---
+### 진행현황(2025.04.29)
+### Gradio 대시보드 개발
+대시보드 사용자와 유사한 취향의 유저를 데이터에서 찾아, 영화를 추천해줌
+
+- 대시보드 사용자가 추천 시스템에 활용할 모델(MF or NCF)과 샘플링 방법(Counterfactual-Based, Popularity-Based)을 선택
   
+  <img src = "https://github.com/user-attachments/assets/0c4edeff-89b2-4660-8114-4ef9962a24da" alt="image" width = "600" />
 
+- 사용자가 좋아하는 영화를 반복적으로 선택하여, 취향이 비슷한 유저를 특정
+  
+  <img src = "https://github.com/user-attachments/assets/adc6a97f-11ed-4ba2-af83-6060064f786e" alt="image" width = "600" />
 
+- 사용자가 좋아하는 영화를 입력받아, 유사한 유저가 train 셋에서 좋아하는 영화들의 인기도 평균을 제공
 
+  <img src = "https://github.com/user-attachments/assets/59520050-17a8-4d2f-b7ee-95cb1c9fe4cf" alt="image" width = "600" />
 
+- 인과추론 방법론이 적용되지 않은 상태의 추천 결과(Standard)와 적용된 상태의 추천 결과(Compare)를 비교하도록, 영화 제목과 인기도를 출력
+
+  <img src = "https://github.com/user-attachments/assets/724680ed-b0ea-4f0c-abca-dac13de63e04" alt="image" width = "600" />
+
+- TMDB의 API를 사용하여, 추천된 영화 제목을 검색해 해당 영화의 포스터 이미지 제공
+
+  <img src = "https://github.com/user-attachments/assets/b058c686-b3ef-4934-a4d0-5ead9f256eac" alt="image" width = "600" />
+
+### 다음 계획
+- 논문 소개와 결과를 비교한 시각화 자료를 정리해 Gradio에 반영
+  
