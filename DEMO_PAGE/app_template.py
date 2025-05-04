@@ -7,7 +7,7 @@ from pages.page5_embedding_viz import page5_ui
 from pages.page6_abt import page6_ui
 import pages.page1_agent4rec as a4r
 import pages.page2_CCL as CCL
-
+import pages.page3_pda as pda
 
 a4r_path = "agent4rec_simulation_result_all_300_5_4_new_trait.csv"
 a4r_df, a4r_policy_list = a4r.load_csv(a4r_path)
@@ -84,8 +84,8 @@ with gr.Blocks() as demo:
                 a4r.page1_agent4rec_ui(a4r_df,a4r_policy_list)
             with gr.Tab("2. CCL"):
                 CCL.page2_ui()
-            with gr.Tab("3. 인과 추론 예시"):
-                page3_ui()
+            with gr.Tab("3. PDA"):
+                pda.page3_pda_ui()
             with gr.Tab("4. CIA 모듈 데모"):
                 page4_ui()
             with gr.Tab("5. 임베딩 비교 시각화"):
