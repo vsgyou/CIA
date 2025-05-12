@@ -39,13 +39,15 @@ def calculus_pop(train_df, num_user):
     train_df['popularity'] = train_df['item'].map(item_pop)
     return item_pop, train_df
 # 유저별로 아이템 인기도 평균 계산
-def calculus_user_pop(train_df, x_test):
+
+def calculus_user_pop(train_df, x_test, top_k):
     user_popularity_avg = train_df.groupby('user')['popularity'].mean()
-    top_20_user = user_popularity_avg.nlargest(5).index
-    low_20_user = user_popularity_avg.nsmallest(5).index
+    top_k_user = user_popularity_avg.nlargest(top_k).index
+    low_k_user = user_popularity_avg.nsmallest(top_k).index
     all_user_idx = np.unique(x_test[:,0])
     all_tr_idx = np.arange(len(x_test))
-    return user_popularity_avg, all_user_idx, all_tr_idx
+    return user_popularity_avg, top_k_user, low_k_user,all_user_idx, all_tr_idx
+
 
 def load_movie_data():
     # movie_path = "../data/page2_movie_data/u.item"
