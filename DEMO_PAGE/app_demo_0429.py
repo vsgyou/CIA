@@ -33,9 +33,9 @@ team_members = [
         "name": "이상현",
         "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
         "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
+        "intro": "고객의 숨겨진 의도를 찾아 고객이 원하는 추천시스템을 개발하는 AI 엔지니어",
         "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
-        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
+        "demo_desc": "고객 페르소나 기반 Agent를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 고객 특성과 어떻게 상호작용하며 영향을 미치는지를 인과적으로 분석",
         "github": "https://www.linkedin.com/in/sanghyeon/",
         "photo": "assets/sanghyeon.png"
     },
@@ -53,11 +53,21 @@ team_members = [
         "name": "정지운",
         "affiliation": "취업준비생 / 추천 시스템 희망",
         "role": "추천 시스템 인기 편향 완화",
-        "intro": "다양한 아이템이 포함된 리스트 제공을 통한 사용자 경험 개선선",
+        "intro": "다양한 아이템이 포함된 리스트 제공을 통한 사용자 경험 개선",
         "demo_title": "CCL: 시스템에서 발생하는 노출 편향을 완화시키는 논문 구현",
         "demo_desc": "**혼란변수(confounder)에 의해 발생하는 노출편향을 완화시키기 위해 **데이터 증강**을 통해 다양한 아이템이 노출된 상황을 시뮬레이션",
         "github": "https://www.linkedin.com/in/jeongjiun",
         "photo": "assets/jiun.png"
+    },
+    {
+        "name": "장원혁",
+        "affiliation": "LG전자 / 음성기술팀",
+        "role": "음성엔진구축",
+        "intro": "ㅇㅇㅇ",
+        "demo_title": "na",
+        "demo_desc": "na",
+        "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4/",
+        "photo": "assets/sanghyeon.png"
     },
     # ... 추가 구성원
 ]
