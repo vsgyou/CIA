@@ -148,7 +148,6 @@ def build_members():
     
     return members
 
-
 def build_agent4rec():
     with gr.Column(visible=False) as agent4rec:
         a4r.page1_agent4rec_ui(a4r_df,a4r_user_df,a4r_log_df,a4r_policy_list)

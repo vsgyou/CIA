@@ -253,21 +253,41 @@ def interaction(selected_movie, remaining_users, selected_history, standard_mode
             "Genre" : compare_genre
         })
         
+        # # Standard 모델의 포스터와 순위 출력
+        # standard_posters_html = ''.join([ 
+        #     f'<div style="flex: 1 0 18%; margin: 10px; text-align: center; background-color: black; padding: 10px; border-radius: 10px;">' 
+        #     f'<img src="{url}" width="200" style="margin-bottom: 10px;"/>' 
+        #     f'<p>{name}</p><p>{pop}</p></div>' 
+        #     for i, (url, name, pop) in enumerate(zip(standard_posters, standard_rec_name, standard_pop)) 
+        # ]) 
+
+        # # Compare 모델의 포스터와 순위 출력
+        # compare_posters_html = ''.join([ 
+        #     f'<div style="flex: 1 0 18%; margin: 10px; text-align: center; background-color: black; padding: 10px; border-radius: 10px;">' 
+        #     f'<img src="{url}" width="200" style="margin-bottom: 10px;"/>' 
+        #     f'<p>{name}</p><p>{pop}</p></div>' 
+        #     for i, (url, name, pop) in enumerate(zip(compare_posters, compare_rec_name, compare_pop)) 
+        # ]) 
+
         # Standard 모델의 포스터와 순위 출력
-        standard_posters_html = ''.join([ 
-            f'<div style="flex: 1 0 18%; margin: 10px; text-align: center; background-color: black; padding: 10px; border-radius: 10px;">' 
-            f'<img src="{url}" width="200" style="margin-bottom: 10px;"/>' 
-            f'<p>{name}</p><p>{pop}</p></div>' 
-            for i, (url, name, pop) in enumerate(zip(standard_posters, standard_rec_name, standard_pop)) 
-        ]) 
+        standard_posters_html = ''.join([
+            f'<div style="flex: 1 0 18%; margin: 10px; text-align: center; background-color: #f9fafb; padding: 12px; '
+            f'border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">'
+            f'<img src="{url}" width="200" style="margin-bottom: 10px; border-radius: 8px;"/>'
+            f'<p style="font-weight: bold; color: #1f2937;">{name}</p>'
+            f'<p style="color: #6b7280;">Popularity: {pop}</p></div>'
+            for i, (url, name, pop) in enumerate(zip(standard_posters, standard_rec_name, standard_pop))
+        ])
 
         # Compare 모델의 포스터와 순위 출력
-        compare_posters_html = ''.join([ 
-            f'<div style="flex: 1 0 18%; margin: 10px; text-align: center; background-color: black; padding: 10px; border-radius: 10px;">' 
-            f'<img src="{url}" width="200" style="margin-bottom: 10px;"/>' 
-            f'<p>{name}</p><p>{pop}</p></div>' 
-            for i, (url, name, pop) in enumerate(zip(compare_posters, compare_rec_name, compare_pop)) 
-        ]) 
+        compare_posters_html = ''.join([
+            f'<div style="flex: 1 0 18%; margin: 10px; text-align: center; background-color: #f9fafb; padding: 12px; '
+            f'border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">'
+            f'<img src="{url}" width="200" style="margin-bottom: 10px; border-radius: 8px;"/>'
+            f'<p style="font-weight: bold; color: #1f2937;">{name}</p>'
+            f'<p style="color: #6b7280;">Popularity: {pop}</p></div>'
+            for i, (url, name, pop) in enumerate(zip(compare_posters, compare_rec_name, compare_pop))
+        ])
 
         # 모델 구분을 위한 헤더 추가
         standard_posters_html = f'<div style="font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 10px;">🧪 Standard 모델 추천 영화</div>' + \
