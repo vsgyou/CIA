@@ -34,14 +34,14 @@ team_members = [
         "photo": "sanghyeon.png"
     },
     {
-        "name": "나는 예시에요",
-        "affiliation": "PseudoLab / AI 연구팀",
-        "role": "프론트엔드 및 인터페이스 설계",
-        "intro": "시각화로 데이터에 생명을 불어넣는 디자이너",
-        "demo_title": "추천 결과 시각화 UI",
-        "demo_desc": "시뮬레이션 로그를 페이지별 카드로 시각화",
-        "github": "",
-        "photo": "https://avatars.githubusercontent.com/u/2?v=4"
+        "name": "정지운",
+        "affiliation": "취업준비생 / 추천 시스템 희망",
+        "role": "추천 시스템 인기 편향 완화",
+        "intro": "다양한 아이템이 포함된 리스트 제공을 통한 사용자 경험 개선선",
+        "demo_title": "CCL: 시스템에서 발생하는 노출 편향을 완화시키는 논문 구현",
+        "demo_desc": "**혼란변수(confounder)에 의해 발생하는 노출편향을 완화시키기 위해 **데이터 증강**을 통해 다양한 아이템이 노출된 상황을 시뮬레이션",
+        "github": "www.linkedin.com/in/jeongjiun",
+        "photo": "./assets/jiun.png"
     },
     {
         "name": "나는 예시에요",
