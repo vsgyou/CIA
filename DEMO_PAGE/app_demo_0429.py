@@ -69,6 +69,16 @@ team_members = [
         "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4/",
         "photo": "assets/sanghyeon.png"
     },
+    {
+        "name": "황영산",
+        "affiliation": "프라이데이즈랩 / Product 팀",
+        "role": "Data Scientist",
+        "intro": "마케팅 솔루션 프로덕을 개발하고 있습니다",
+        "demo_title": "PDA: 인기도 편향 제거 및 활용용",
+        "demo_desc": "인과 그래프로 아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
+        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
+        "photo": "assets/yeongsan.png"
+    }
     # ... 추가 구성원
 ]
 
