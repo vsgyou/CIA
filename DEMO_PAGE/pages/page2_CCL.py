@@ -84,60 +84,75 @@ datasets = {
 def interpret_metric(metric_name):
     if metric_name == "MSE":
         return """
+        <span style="font-size:17px;">
         <strong>MSE (Mean Squared Error)</strong>는 예측값과 실제값 사이의 평균 제곱 오차로, 작을수록 예측이 정확함을 의미합니다.  
         <br><br>
-        - <strong>Coat</strong>: MF, NCF 모두 인과추론 적용 전이 더 낮은 MSE를 보이며, <strong>정확도가 더 높음</strong>.  
+        - <strong>Coat</strong>: MF, NCF 모두 인과추론 적용 전이 더 낮은 MSE를 보이며, <strong>정확도가 더 높음</strong>. <br> 
         - <strong>Movielens</strong>: NCF가 가장 낮은 MSE를 기록, NCF_CF나 NCF_pop보다 우수함.  
         <br><br>
         ▶️ <strong>인과추론 적용 시 예측 정확도는 전반적으로 낮아졌음.</strong>
+        </span>
         """
     elif metric_name == "AUC":
         return """
+        <span style="font-size:17px;">
         <strong>AUC (Area Under the Curve)</strong>는 분류 성능 지표로, 클수록 더 나은 분리 성능을 의미합니다.  
         <br><br>
-        - <strong>Coat</strong>: NCF_pop이 0.7338로 최고, 인과추론 적용 시 오히려 성능 <strong>향상된 경우</strong>.  
+        - <strong>Coat</strong>: NCF_pop이 0.7338로 최고, 인과추론 적용 시 오히려 성능 <strong>향상된 경우</strong>.  <br>
         - <strong>Movielens</strong>: NCF가 가장 우수하며, 인과추론 적용 시 소폭 <strong>감소</strong>.  
         <br><br>
         ▶️ <strong>일부 케이스(Coat의 NCF_pop)에서는 인과추론이 분류 성능을 개선할 수 있음.</strong>
+        </span>
         """
     elif metric_name == "NDCG@5":
         return """
+        <span style="font-size:17px;">
         <strong>NDCG@5</strong>는 상위 5개 추천 아이템의 품질을 평가하며, 클수록 더 적절한 순위를 의미합니다.  
         <br><br>
-        - <strong>Coat</strong>: NCF가 0.6158로 가장 우수, 인과추론 적용 시 순위 품질 <strong>감소</strong>.  
+        - <strong>Coat</strong>: NCF가 0.6158로 가장 우수, 인과추론 적용 시 순위 품질 <strong>감소</strong>.  <br>
         - <strong>Movielens</strong>: NCF가 0.9536로 가장 우수, 인과추론 적용 효과는 <strong>미미</strong>.  
         <br><br>
         ▶️ <strong>정렬 품질 측면에서는 인과추론이 뚜렷한 개선을 보이지 않음.</strong>
+        </span>
         """
     elif metric_name == "NDCG@10":
         return """
+        <span style="font-size:17px;">
         <strong>NDCG@10</strong>은 상위 10개 추천의 품질을 나타내는 지표로, 높을수록 더 나은 추천 품질을 의미합니다.  
         <br><br>
-        - <strong>Coat</strong>: NCF가 가장 우수하며, 인과추론 적용 시 소폭 <strong>감소</strong>.  
+        - <strong>Coat</strong>: NCF가 가장 우수하며, 인과추론 적용 시 소폭 <strong>감소</strong>.  <br>
         - <strong>Movielens</strong>: NCF와 변형 모델 간 성능 차이가 거의 없음.  
         <br><br>
         ▶️ <strong>추천 품질(정렬)에서는 기존 모델이 우세하거나 거의 동일함.</strong>
+        </span>
         """
     elif metric_name == "Gini Index":
         return """
+        <span style="font-size:17px;">
         <strong>Gini Index</strong>는 추천의 다양성/공정성을 측정하며, <strong>작을수록 추천이 균형 잡혀 있음</strong>을 의미합니다.  
         <br><br>
-        - <strong>Coat</strong>: MF가 가장 낮아 <strong>다양성 확보에 효과적</strong>, 인과추론 적용 시 Gini 증가.  
+        - <strong>Coat</strong>: MF가 가장 낮아 <strong>다양성 확보에 효과적</strong>, 인과추론 적용 시 Gini 증가.  <br>
         - <strong>Movielens</strong>: 인과추론 적용 모델(MF_pop, NCF_pop)에서 Gini가 더 낮아 <strong>다양성 개선</strong>.  
         <br><br>
         ▶️ <strong>데이터셋에 따라 다양성 측면에서 인과추론이 긍정적 영향을 주기도 함.</strong>
+        </span>
         """
     elif metric_name == "Global Utility":
         return """
+        <span style="font-size:17px;">
         <strong>Global Utility</strong>는 시스템 전체에서 사용자가 얻는 효용의 총합으로, 클수록 좋습니다.  
         <br><br>
-        - <strong>Coat</strong>: MF가 가장 높으나, NCF_pop도 0.4813으로 <strong>효용 향상</strong>에 기여.  
+        - <strong>Coat</strong>: MF가 가장 높으나, NCF_pop도 0.4813으로 <strong>효용 향상</strong>에 기여.  <br>
         - <strong>Movielens</strong>: NCF가 0.9090으로 최고, 인과추론 적용은 큰 차이 없음.  
         <br><br>
         ▶️ <strong>효용 측면에서는 특정 조합에서 인과추론이 의미 있는 개선을 가져올 수 있음.</strong>
+        </span>
         """
     else:
-        return "해당 지표에 대한 해석이 준비되어 있지 않습니다."
+        return """
+        <span style="font-size:17px;">해당 지표에 대한 해석이 준비되어 있지 않습니다.
+        </span>
+        """
 
 # 그래프 생성 함수
 def plot_single_metric(dataset_name, metric_name):
@@ -313,36 +328,41 @@ font_style = """
             font-size: 1.5em;
             font-weight: bold;
             margin-top: 20px;
-            color: #333;
+            color: #222; /* 더 선명한 검정 */
         }
+
         .highlight-box {
-            background-color: #111827;
+            background-color: #f8f9fa; /* 밝은 회색 */
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border-left: 5px solid #6366f1;
+            border-left: 5px solid #007bff; /* 블루 톤 강조 */
             font-size: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 1000px;
         }
+
         .sampling-method {
-            background-color: #111827;
+            background-color: #f1f3f5; /* 밝은 블루 톤 */
             padding: 12px;
             margin: 8px 0;
             font-size: 1rem;
             border-radius: 8px;
-            border-left: 4px solid #4f46e5;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid #0056b3; /* 진한 블루 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 1000px;
         }
+
         .keyword {
             font-weight: bold;
-            color: #4f46e5;
+            color: #0056b3; /* 더 깊은 블루 */
         }
+
         .tip {
             font-style: italic;
-            color: #6b7280;
+            color: #6c757d; /* 중간 회색 */
         }
+
         .image-container {
             display: flex;
             justify-content: space-between;
@@ -351,14 +371,14 @@ font_style = """
         }
 
         .causal-image {
-            border-radius: 15px; /* 둥근 모서리 */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-            border: 4px solid #6366f1; /* 보라색 테두리 */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border: 4px solid #007bff; /* 블루 톤 강조 */
         }
 
         .description-container {
             font-size: 1.1em;
-            color: #4f46e5;
+            color: #0056b3;
             line-height: 1.6;
             font-weight: bold;
         }
@@ -369,11 +389,11 @@ font_style = """
 
         .node-info {
             font-size: 1em;
-            color: #6b7280;
+            color: #6c757d;
         }
 
         .node-info strong {
-            color: #4f46e5; /* 노드 이름 강조 */
+            color: #0056b3; /* 강조 색 변경 */
         }
     </style>
     """
@@ -397,23 +417,28 @@ def page2_ui():
 
     with gr.Blocks(css=".gr-box {background-color: #fdfdfd; border-radius: 12px; padding: 16px;}") as demo:
         with gr.Tab("1️⃣대시보드 소개"):
-            gr.Markdown("""  
-            <br>
-            <span style="font-size: 1.1em; font-weight: bold;">
-            논문 <strong>"Contrastive Counterfactual Learning for Causality-aware Interpretable Recommender Systems (CIKM 2023)"</strong>을 구현하며,  
-            <br>
-            인과추론 방법을 적용시킨 추천 결과를 확인할 수 있는 페이지 입니다.
-            </span>
-            <br>
-            <br>
-            """)  
+            gr.HTML("""
+                <div style="border: 1px solid #CCCCCC; 
+                            background-color: #F9F9F9; 
+                            padding: 15px; 
+                            border-radius: 8px; 
+                            font-size: 18px; 
+                            font-weight: bold; 
+                            text-align: center; 
+                            color: #333333;
+                            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                    📝 <span style="color: #0056B3;">논문 <em>Contrastive Counterfactual Learning for Causality-aware Interpretable Recommender Systems (CIKM 2023)</em>을 구현하며,<br>
+                    인과추론 방법을 적용시킨 추천 결과를 확인할 수 있는 페이지입니다.</span>
+                <br>
+                </div>
+            """)
             
             gr.Markdown("""
-            ## 📝 적용된 논문 소개
-            이 논문은 추천 시스템에서 <strong>노출편향(exposure bais)</strong>을 인과추론 관점에서 해석하고, 
+            ## 📢 적용된 논문 소개
+            이 논문은 추천 시스템에서 <strong>노출편향(exposure bias)</strong> 문제를 인과추론 관점에서 분석석하고, 
             <br>
-            이를 완화하기 위해 <strong>대조적 자기지도학습(contrastive self-supervised learning)</strong>기법을 적용한 <strong>CCL</strong>방법을 제안하는 논문입니다.
-            """)  
+            이를 완화하기 위해 <strong>대조적 자기지도학습(contrastive self-supervised learning)</strong>기법을 적용한 <strong>CCL</strong>방법을 제안합니다.
+            """)   
         
             with gr.Row():
                 with gr.Column():
@@ -436,9 +461,9 @@ def page2_ui():
                             </p>
                     """)
             gr.HTML("""
-                <strong>Z -> I</strong>: 혼란변수가 아이템에 미치는 영향으로, 혼란 변수에 의해 유저는 전체 아이템을 보지 못하고, 일부만 노출됩니다.  <br>
+                <li> <strong>Z -> I</strong>: 혼란변수가 아이템에 미치는 영향으로, 혼란 변수에 의해 유저는 전체 아이템을 보지 못하고, 일부만 노출됩니다.  <br>
                 <br>
-                <strong>Z -> Y</strong>: 혼란변수가 결과에 직접적으로 미치는 영향을 의미합니다. <br>
+                <li> <strong>Z -> Y</strong>: 혼란변수가 결과에 직접적으로 미치는 영향을 의미합니다. <br>
                 <br>
                 """)
             gr.HTML("""
@@ -506,7 +531,7 @@ def page2_ui():
             </div>
             """)
             
-        with gr.Tab("2️⃣실험 결과"):
+        with gr.Tab("2️⃣실험 및 결과"):
             gr.HTML(f"""
                 {font_style}
                 <div class="section-title">🛠️ 실험 세팅</div>
@@ -515,7 +540,7 @@ def page2_ui():
                 <div class="highlight-box">
                     <strong>📊 사용된 데이터셋 요약</strong>
                     <table style="width:70%; margin-top: 10px; border-collapse: collapse;">
-                        <thead style="background-color: #1f2937; color: white;">
+                        <thead style="background-color: #f1f3f5; color: #333;">
                             <tr>
                                 <th style="padding: 8px; border: 1px solid #4b5563;">데이터셋</th>
                                 <th style="padding: 8px; border: 1px solid #4b5563;">유저 수</th>
@@ -540,10 +565,10 @@ def page2_ui():
                     </table>
 
                     <br><br>
-                    <strong>🧪 실험 목적 및 비교</strong>
+                    <strong>🧪 Test 데이터에서의 차이</strong>
                     <ul style="line-height: 1.6; margin-top: 10px;">
-                        <li>➡️ <strong>Coat</strong> 데이터는 <em>무작위 노출 기반의 일반화 성능</em>을 평가하기 위한 기준으로 사용됩니다.</li>
-                        <li>➡️ <strong>Movielens</strong>는 <em>현실 세계의 편향이 포함된 상황</em>에서의 성능을 보기 위해 추가로 평가합니다.</li>
+                        <li>➡️ <strong>Coat</strong> 데이터는 <em>무작위 노출 기반의 일반화 성능</em>을 평가하기 위해 랜덤으로 노출된 아이템을 사용합합니다.</li>
+                        <li>➡️ <strong>Movielens</strong>는 현실에서 얻어지는 데이터이며, <em>편향이 포함된 상황</em>에서의 성능을 보기 위해 추가로 평가합니다.</li>
                     </ul>
                 </div>
                 """)
@@ -555,8 +580,8 @@ def page2_ui():
 
                 <div class="highlight-box">
                     <strong>📚 사용된 모델과 샘플링 방법 요약</strong>
-                    <table style="width: 70%; margin-top: 10px; border-collapse: collapse;">
-                        <thead style="background-color: #1f2937; color: white;">
+                    <table style="width:70%; margin-top: 10px; border-collapse: collapse;">
+                        <thead style="background-color: #f1f3f5; color: #333;">
                             <tr>
                                 <th style="padding: 8px; border: 1px solid #4b5563;">기존 모델</th>
                                 <th style="padding: 8px; border: 1px solid #4b5563;">인과추론 적용 모델</th>
@@ -565,11 +590,11 @@ def page2_ui():
                         <tbody>
                             <tr>
                                 <td style="padding: 8px; border: 1px solid #4b5563;">MF (Matrix Factorization)</td>
-                                <td style="padding: 8px; border: 1px solid #4b5563;">MF + (Counterfactual, Item pop based) sampling/td>
+                                <td style="padding: 8px; border: 1px solid #4b5563;">MF + (Counterfactual, Item pop based) sampling</td>
                             </tr>
                             <tr>
                                 <td style="padding: 8px; border: 1px solid #4b5563;">NCF (Neural Collaborative Filtering)</td>
-                                <td style="padding: 8px; border: 1px solid #4b5563;">NCF + (Counterfactual, Item pop based) sampling/td>
+                                <td style="padding: 8px; border: 1px solid #4b5563;">NCF + (Counterfactual, Item pop based) sampling</td>
                             </tr>
                         </tbody>
                     </table>
