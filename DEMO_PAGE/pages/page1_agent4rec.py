@@ -507,29 +507,25 @@ def parse_agent_log(log_str):
 def page1_agent4rec_ui(df,df_user, df_log, policy_list):
     with gr.Tabs():
         with gr.Tab("0️⃣ Agent4Rec 및 데모 소개"):
-            gr.Image("./assets/agent4rec_main.png", show_label=False, container=False, height=400)
+
+            gr.Image("./assets/agent4rec_main.png", show_label=False, container=False, height=350)
             gr.Markdown("""
             ## ℹ️ 추천 시뮬레이션 데모 소개
             
             이 데모는 **고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해,  
-            추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지**를 분석합니다.
+            추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 분석합니다.
 
             특히 실제 A/B 테스트가 어려운 환경에서도,  
-            **정책만 다르게 적용한 반사실적 시나리오(Counterfactual Setup)**를 통해  
-            **정책 효과(Policy Effect)의 인과적 해석(Causal Interpretation)**을 가능하게 하도록 설계되었습니다.
-
-            ---
-
+            **정책만 다르게 적용한 반사실적 시나리오(Counterfactual Setup)** 를 통해  
+            **정책 효과(Policy Effect)의 인과적 해석(Causal Interpretation)** 을 가능하게 하도록 설계되었습니다.
+            
             ### 🧪 시뮬레이션 실험의 인과적 구조
 
             - 동일한 고객군을 기반으로 다양한 추천 정책(policy)과 리랭킹 전략(rerank)을 적용
-            - 이를 통해 **정책이 없었을 경우와 있었을 경우의 차이(uplift)**를 추정
-            - 고객의 특성(activity, conformity, diversity)을 기반으로  
-            **이질적 효과(Heterogeneous Treatment Effect, HTE)** 분석 가능
-
-            ---
-
-            ### 📊 데모 구성 (Causal Framing 기반 해석)
+            - 이를 통해 **정책이 없었을 경우와 있었을 경우의 차이(uplift)** 를 추정
+            - 고객의 특성(activity, conformity, diversity)을 기반으로 **이질적 효과(Heterogeneous Treatment Effect, HTE)** 분석 가능   
+            
+            ### 📊 데모 구성
 
             1. **정책 효과 분석 (RQ1–3)**  
             > "*정책에 따라 고객의 반응이 어떻게 달라지고 어떤 정책이 더 효과적인가?"  
@@ -542,28 +538,15 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
             3. **시뮬레이션 시연**  
             > 고객 특성을 직접 설정하여 추천 흐름을 체험  
             실제 고객과 유사한 Agent를 통해 **개인화된 추천 시나리오의 흐름과 결과를 확인** 
-
-            ---
-                               
-            ### 기존 Agent4Rec 개선 사항
+            
+            ### 🚀 기존 Agent4Rec 대비 개선 사항
             
             기존 시뮬레이션 프레임워크를 확장하여 더욱 정교한 고객 Agent를 구축하였고, 
             실제 서비스 정책에 따른 성과(uplift)의 인과적 분석을 통해 정교한 정책 비교와 설명이 가능하도록 개선했습니다.
             - 고객 특성(활동성/동조성/다양성) 추정치를 확률값으로 직접 반영해 Agent의 선택 행동이 실제 로그에 더 유사해졌으며, 시뮬레이션 내 평균 선택률(CTR)이 기존 대비 55% 증가하였습니다.
             - 실제 서비스 환경을 고려한 **리랭킹 방식(policy reranking)** 적용 및 비교 실험 진행 (인기도, 다양성 리랭킹 추가, 가격순 리랭킹 확장 가능)
               - 총 12개 실험 조합: `4개 추천 정책` × `3개 리랭킹 방식`
-            ---
-
-            ### 📊 데모 구성
-                        
-            1. **정책 효과 분석**  
-            - 다양한 추천 정책(MF, VAE, POP 등)에 따른 만족도 및 선택 패턴 분석  
-            2. **리랭킹 퍼널 분석**  
-            - 리랭킹 전략(Prefer 등)에 따른 고객의 추천 페이지 이동 흐름 분석  
-            3. **시뮬레이션 시연**  
-            - 입력한 고객 특성에 따라 추천 흐름을 직접 체험
-            ---
-
+            
             ### 🧬 실험 요약
 
             - **고객 수**: 총 300명 (고객 아바타 기반)
@@ -587,8 +570,6 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
               - `feeling`: 영화별 시청 후 소감 (자연어)
               - `ground_truth`: 추천 후보 내 선호 영화 여부
 
-            ---
-                        
             ### 🔬 시뮬레이션 기반에 대한 신뢰성
 
             이 데모는 최신 추천 시스템 연구에서 사용되는 [On Generative Agents in Recommendation (SIGIR 2024)](https://dl.acm.org/doi/abs/10.1145/3626772.3657844) 구조를 기반으로 설계되었습니다.
@@ -607,16 +588,12 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
 
             - 📚 **관련 연구 사례**
               - [CausalSim (NSDI 2023)](https://www.usenix.org/biblio-13301): Agent 기반 시뮬레이션을 활용하여 causal effect 측정이 실제 실험 결과와 높은 상관관계를 가짐
-            ---
-
-                        
+            ---                        
             ## Agent4Rec Architecture
             """)
             
             gr.Image("./assets/agent4rec_flow.png", show_label=False, container=False, height=400)
             gr.Markdown("""
-            
-                        
             ### 🧠 시스템 아키텍처 요약
 
             추천 시뮬레이션은 **에이전트 시스템(Agent Architecture)**과 **추천 환경(Recommendation Environment)** 두 구성으로 나뉘며, 실제 사용자와 유사한 상호작용을 시뮬레이션하기 위한 구조로 설계되었습니다.
@@ -654,15 +631,7 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
               - `Random`, `Most Popular`, `MF`, `LightGCN`, `MultVAE` 등 다양한 정책 내장  
               - 외부 추천 모델을 쉽게 연동할 수 있는 확장 구조 제공
             """)
-            # unique_users = df.drop_duplicates(subset=["avatar_id", "activity", "conformity", "diversity"])
-            # traits = ["activity", "conformity", "diversity"]
-            
-            # for trait in traits:
-            #     fig = px.histogram(unique_users, x=trait, color=trait,
-            #                     title=f"고객 특성 분포: {trait}", barmode='group')
-            #     fig.update_layout(margin=dict(t=40, l=0, r=0, b=0))
-            #     gr.Plot(value=fig)
-        with gr.Tab("2️⃣ 정책 효과 분석 대시보드"):
+        with gr.Tab("1️⃣ 정책 효과 분석 대시보드"):
             gr.Markdown("""
             ## 📊 정책 효과 분석 대시보드
 
@@ -680,16 +649,6 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
                 v, s = plot_policy_by_trait(df, trait)
                 gr.Plot(value=v)
                 gr.Plot(value=s)
-            
-            # with gr.Row():
-            #     explain_button = gr.Button("이 결과 해석해줘")
-            #     explanation_output = gr.Textbox(label="📘 해석 결과")
-
-            # explain_button.click(
-            #     fn=lambda trait: explain_graph_data(trait, summarize_trait_data(df, trait)),
-            #     inputs=gr.Dropdown(["activity", "conformity", "diversity"]),
-            #     outputs=explanation_output
-            # )
 
             with gr.Accordion("📌 Causal Interpretation Agent 결과 요약", open=False):
                 summary_button = gr.Button("요약 실행")
@@ -746,8 +705,6 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
             하나의 동일한 추천 정책(MF)을 고정한 상태에서 다양한 리랭킹 방식을 적용하고 고객의 흐름(페이지 이동, 선택률, 이탈 등)을 비교함으로써,
             마치 A/B 테스트처럼 **리랭킹 전략 간 효과(uplift)**를 파악할 수 있습니다.
 
-            실험은 아래 하나의 인과적 질문(RQ4)에 기반하며, 각 시각화는 이를 정량적으로 분석하기 위한 시각적 도구입니다:
-
             🔹 RQ4. 리랭킹 전략별 퍼널 흐름 차이
             - 질문: 리랭킹 전략은 고객의 추천 흐름(페이지 이동/이탈/만족도)에 어떤 인과적 영향을 미치는가?
             - 분석:
@@ -759,10 +716,6 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
 
 
             fig1, fig2, fig3, fig4, sankey_figs = rerank_dashboard(df)
-            # gr.Markdown("### 📊 페이지별 고객 수 변화 (리랭킹 정책 비교)")
-            # gr.Plot(value=fig1)
-
-            # gr.Markdown("### 📈 페이지별 고객 특성 평균 변화")
             gr.Plot(value=fig1)
             gr.Plot(value=fig2)
             gr.Plot(value=fig3)
@@ -783,63 +736,10 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
 
                 summary_button.click(fn=run_summary_rq, inputs=[], outputs=summary_output)
 
-            # gr.Markdown("### 🔄 페이지 이동 + 만족도 이탈 흐름")
-            # gr.Plot(value=sankey_fig)
-
-            # gr.Markdown("### 🔄 리랭킹 전략별 고객 퍼널 비교")
-            # policy_dropdown = gr.Dropdown(choices=policy_list, value="MF", label="추천 정책 선택")
-            # run_button = gr.Button("분석 실행")
-            # # 출력 컴포넌트 정의 (처음엔 숨김)
-            # output1 = gr.Plot(visible=False)
-            # output2 = gr.Plot(visible=False)
-            # output3 = gr.Plot(visible=False)
-            # output4 = gr.Plot(visible=False)
-
-            # # 실행 버튼 클릭 시, figure 4개와 visibility 설정 함께 반환
-            # def rerank_dashboard_with_visible(policy_name):
-            #     fig1, fig2, fig3, fig4, sankey_fig = rerank_dashboard(df)
-            #     return fig1, fig2, fig3, sankey, gr.update(visible=True), gr.update(visible=True), gr.update(visible=True), gr.update(visible=True)
-            
-            # # 버튼 클릭 연결 (figure 4개 + visible 업데이트 4개 총 8개 반환)
-            # run_button.click(fn=rerank_dashboard_with_visible,
-            #                 inputs=policy_dropdown,
-            #                 outputs=[output1, output2, output3, output4,
-            #                         output1, output2, output3, output4])
-
 
         with gr.Tab("3️⃣ Trait 기반 사용자 체험"):
             submit_btn, activity, conformity, diversity, taste_keywords, policy, rerank = customer_input_ui()
 
-            # def run_simulation(activity, conformity, diversity, taste_keywords, policy, rerank):
-            #     user_traits = {
-            #         "activity": activity,
-            #         "conformity": conformity,
-            #         "diversity": diversity
-            #     }
-            #     avatar_id = find_most_similar_avatar(policy, rerank, user_traits, taste_keywords, df_user)
-
-            #     if avatar_id < 0:
-            #         return "😢 입력한 고객 특성과 동일한 아바타를 찾지 못했습니다.", ""
-
-            #     # 로그 추출
-            #     log_df = df_log[
-            #         (df_log.avatar_id == avatar_id) &
-            #         (df_log.rerank == rerank) &
-            #         (df_log.policy == policy)
-            #     ]
-
-            #     if len(log_df) == 0:
-            #         return f"🎯 유사 avatar ID: {avatar_id}", "❌ 해당 정책/리랭킹 조합의 로그가 없습니다."
-
-            #     # log 문자열 → 줄바꿈 기준 리스트로 나누기
-            #     log_str = log_df.iloc[0]["log"]
-            #     log_lines = log_str.strip().split("\n")
-
-            #     # Markdown으로 단계별 구성
-            #     markdown_output = "\n\n".join([f"### {i+1}. {line}" for i, line in enumerate(log_lines)])
-
-            #     summary = f"🎯 유사 avatar ID: {avatar_id}\n📌 추천 정책: {policy} / 리랭킹: {rerank}"
-            #     return summary, markdown_output
             def run_simulation(activity, conformity, diversity, taste_keywords, policy, rerank):
                 user_traits = {
                     "activity": activity,
@@ -889,17 +789,4 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
                 outputs=[output_summary] + log_outputs
             )
 
-            # output_summary = gr.Markdown(label="🧠 결과 요약")
-            # output_logs = gr.Markdown(label="📜 시뮬레이션 로그")
-
-            # submit_btn.click(
-            #     fn=run_simulation,
-            #     inputs=[activity, conformity, diversity, taste_keywords, policy, rerank],
-            #     outputs=[output_summary, output_logs]
-            # )
-
-            gr.Markdown("🚧 준비 중입니다...")
-
-        with gr.Tab("4️⃣ GPT 해석 리포트"):
-            gr.Markdown("🚧 준비 중입니다...")
 
