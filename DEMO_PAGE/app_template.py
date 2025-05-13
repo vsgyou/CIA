@@ -30,12 +30,12 @@ def profile_box():
                 <hr style="margin-top: 8px;">
                 </div>
                 <div style="line-height: 1.3; font-size: 14px;">
-                <p><strong>ㅇㅇㅇ (dddd)</strong>  
-                <a href="https://linkedin.com/in/.../" target="_blank">LinkedIn</a></p>
+                <p><strong>정지운 (Jiun Jeong)</strong>  
+                <a href="https://linkedin.com/in/Jeongjiun/" target="_blank">LinkedIn</a></p>
                 <ul style="margin: 4px 0 0 20px; padding: 0;">
-                    <li>회사 ㅇㅇㅇ 개발자</li>
-                    <li>ㅇㅇㅇ 데모 개발</li>
-                    <li>keywords: Causal Inference, ㅇㅇ, ㅇㅇ</li>
+                    <li>취업준비생</li>
+                    <li>CCL 데모 개발</li>
+                    <li>keywords: Causal Inference, RecSys, Bias</li>
                 </ul>
                 <hr style="margin-top: 8px;">
                 </div>

@@ -39,19 +39,29 @@ def calculus_pop(train_df, num_user):
     train_df['popularity'] = train_df['item'].map(item_pop)
     return item_pop, train_df
 # 유저별로 아이템 인기도 평균 계산
-def calculus_user_pop(train_df, x_test):
+
+def calculus_user_pop(train_df, x_test, top_k):
     user_popularity_avg = train_df.groupby('user')['popularity'].mean()
-    top_20_user = user_popularity_avg.nlargest(5).index
-    low_20_user = user_popularity_avg.nsmallest(5).index
+    top_k_user = user_popularity_avg.nlargest(top_k).index
+    low_k_user = user_popularity_avg.nsmallest(top_k).index
     all_user_idx = np.unique(x_test[:,0])
     all_tr_idx = np.arange(len(x_test))
-    return user_popularity_avg, all_user_idx, all_tr_idx
+    return user_popularity_avg, top_k_user, low_k_user,all_user_idx, all_tr_idx
+
 
 def load_movie_data():
     # movie_path = "../data/page2_movie_data/u.item"
     movie_path = "./data/page2_movie_data/u.item"
     # 결과를 저장할 리스트
     movie_titles = []
+    movie_years = []
+    movie_genres = []
+    genre_dict = {
+    0: "unknown", 1: "Action", 2: "Adventure", 3: "Animation", 4: "Children's",
+    5: "Comedy", 6: "Crime", 7: "Documentary", 8: "Drama", 9: "Fantasy",
+    10: "Film-Noir", 11: "Horror", 12: "Musical", 13: "Mystery", 14: "Romance",
+    15: "Sci-Fi", 16: "Thriller", 17: "War", 18: "Western"
+    }
     # 파일 읽기
     with open(movie_path, encoding='latin-1') as file:
         for line in file:
@@ -59,6 +69,10 @@ def load_movie_data():
             columns = line.split('|')
             # 두 번째 열 (영화 제목)에서 년도 제거
             movie_name = columns[1].rsplit(' (', 1)[0]
+            if columns[0] == '267':
+                movie_year = 0
+            else:
+                movie_year = columns[1].rsplit(' (', 1)[1][:-1]
             
             # 만약 제목이 ', The'로 끝나면 수정
             if movie_name.endswith(', The'):
@@ -67,17 +81,27 @@ def load_movie_data():
                 movie_name = 'An ' + movie_name[:-4]  # ', An' 처리
             elif movie_name.endswith(', A'):
                 movie_name = 'A ' + movie_name[:-3]   # ', A' 처리
-
+            
+            genre_indices = columns[5:]
+            movie_genre = [genre_dict[i] for i, value in enumerate(genre_indices) if value == '1']
             movie_titles.append(movie_name)
+            movie_years.append(movie_year)
+            movie_genres.append(movie_genre)
+            
         movie_array = np.array(movie_titles)
-    return movie_array
+        movie_year_array = np.array(movie_years)
+        movie_genre_array = np.array(movie_genres, dtype = object)
+    return movie_array, movie_year_array, movie_genre_array
 # 리스트를 NumPy 배열로 변환
-def user_movie_name(train_data, movie_array):        
+def user_movie_name(train_data, movie_array, movie_year_array, movie_genre_array):        
     train_data_true = train_data[train_data["rating"] >= 3]
     train_data_true = train_data_true[["user_id","item_id"]]
     train_data_true = train_data_true - 1
     user_movie = pd.DataFrame({"user_id":train_data_true["user_id"], 
-                            "movie_name":movie_array[train_data_true["item_id"]]})
+                            "movie_name":movie_array[train_data_true["item_id"]],
+                            "movie_year":movie_year_array[train_data_true["item_id"]],
+                            "movie_genre":movie_genre_array[train_data_true["item_id"]]})
+    user_movie["movie_genre"] = user_movie["movie_genre"].apply(lambda x: ', '.join(x))
     return user_movie
 
 
