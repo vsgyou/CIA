@@ -5,6 +5,7 @@ from pages.page3_inference import page3_ui
 from pages.page4_paper_viz import page4_ui
 from pages.page5_embedding_viz import page5_ui
 from pages.page6_abt import page6_ui
+from pages.page7_cor_paper import render as render_page7
 
 
 import pages.page1_agent4rec as a4r
@@ -30,7 +31,7 @@ team_members = [
         "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
         "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
         "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "./assets/sanghyeon.png"
+        "photo": "sanghyeon.png"
     },
     {
         "name": "나는 예시에요",
@@ -93,7 +94,7 @@ def build_member_grid_html(team_members):
     for member in team_members:
         card = f"""
         <div class="card">
-            <img src="{member['photo']}" class="photo"/>
+            <img src="assets/{member['photo']}" class="photo"/>
             <div class="name"><a href="{member['github']}" target="_blank">{member['name']}</a></div>
             <div class="affiliation">{member['affiliation']}</div>
             <div class="role">{member['role']}</div>
@@ -163,6 +164,10 @@ def build_pda():
         pda.page3_pda_ui()
     return b_pda
 
+def build_cor_summary():
+    with gr.Column(visible=False) as cor_summary:
+        render_page7()
+    return cor_summary
 
 def build_profile():
     with gr.Column(visible=False) as profile:
@@ -196,11 +201,13 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             btn_agent4rec = gr.Button("🌐 Agent4Rec: 추천시뮬레이션", elem_classes=["left-btn"])
             btn_ccl = gr.Button("🔀 CCL: dd", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
+            btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
         with gr.Column(scale=5):
             page_members = build_members()
             page_agent4rec = build_agent4rec()
             page_ccl = build_ccl()
             page_pda = build_pda()
+            page_cor_summary = build_cor_summary()
 
     def show_page(target):
         return {
@@ -208,6 +215,7 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             page_agent4rec: gr.update(visible=(target == "agent4rec")),
             page_ccl: gr.update(visible=(target == "ccl")),
             page_pda: gr.update(visible=(target == "pda")),
+            page_cor_summary: gr.update(visible=(target == "cor_summary")),
         }
 
     # target 값을 고정된 상태로 전달
@@ -215,10 +223,12 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
     target_agent4rec = gr.State("agent4rec")
     target_ccl = gr.State("ccl")
     target_pda = gr.State("pda")
+    target_cor_summary = gr.State("cor_summary")
 
-    btn_members.click(fn=show_page, inputs=[target_members], outputs=[page_members, page_agent4rec, page_ccl, page_pda])
-    btn_agent4rec.click(fn=show_page, inputs=[target_agent4rec], outputs=[page_members, page_agent4rec, page_ccl, page_pda])
-    btn_ccl.click(fn=show_page, inputs=[target_ccl], outputs=[page_members, page_agent4rec, page_ccl, page_pda])
-    btn_pda.click(fn=show_page, inputs=[target_pda], outputs=[page_members, page_agent4rec, page_ccl, page_pda])
+    btn_members.click(fn=show_page, inputs=[target_members], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_agent4rec.click(fn=show_page, inputs=[target_agent4rec], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_ccl.click(fn=show_page, inputs=[target_ccl], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_pda.click(fn=show_page, inputs=[target_pda], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_cor_summary.click(fn=show_page, inputs=[target_cor_summary], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
 
 demo.launch()
