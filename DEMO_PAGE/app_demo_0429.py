@@ -142,7 +142,7 @@ def build_member_grid_html(team_members):
     return html
 
 def build_members():
-    with gr.Blocks() as demo:
+    with gr.Column() as demo:
         gr.Markdown("## 👥 팀원 소개\n각자의 기술과 데모를 확인해보세요.")
         gr.HTML(build_member_grid_html(team_members))
     return demo
@@ -200,6 +200,7 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             btn_ccl = gr.Button("🔀 CCL: dd", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
             btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
+            
         with gr.Column(scale=5):
             page_members = build_members()
             page_agent4rec = build_agent4rec()
@@ -216,17 +217,10 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             page_cor_summary: gr.update(visible=(target == "cor_summary")),
         }
 
-    # target 값을 고정된 상태로 전달
-    target_members = gr.State("members")
-    target_agent4rec = gr.State("agent4rec")
-    target_ccl = gr.State("ccl")
-    target_pda = gr.State("pda")
-    target_cor_summary = gr.State("cor_summary")
-
-    btn_members.click(fn=show_page, inputs=[target_members], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_agent4rec.click(fn=show_page, inputs=[target_agent4rec], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_ccl.click(fn=show_page, inputs=[target_ccl], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_pda.click(fn=show_page, inputs=[target_pda], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_cor_summary.click(fn=show_page, inputs=[target_cor_summary], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_members.click(fn=lambda: show_page("members"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_agent4rec.click(fn=lambda: show_page("agent4rec"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_ccl.click(fn=lambda: show_page("ccl"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_pda.click(fn=lambda: show_page("pda"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_cor_summary.click(fn=lambda: show_page("cor_summary"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
 
 demo.launch()
