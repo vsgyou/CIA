@@ -91,8 +91,8 @@ team_members = [
         "intro": "다양한 아이템이 포함된 리스트 제공을 통한 사용자 경험 개선선",
         "demo_title": "CCL: 시스템에서 발생하는 노출 편향을 완화시키는 논문 구현",
         "demo_desc": "**혼란변수(confounder)에 의해 발생하는 노출편향을 완화시키기 위해 **데이터 증강**을 통해 다양한 아이템이 노출된 상황을 시뮬레이션",
-        "github": "www.linkedin.com/in/jeongjiun",
-        "photo": "./assets/jiun.png"
+        "github": "https://www.linkedin.com/in/jeongjiun",
+        "photo": "assets/jiun.png"
     },
     # ... 추가 구성원
 ]
