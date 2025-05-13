@@ -93,7 +93,7 @@ def build_member_grid_html(team_members):
     for member in team_members:
         card = f"""
         <div class="card">
-            <img src="./assets/{member['photo']}" class="photo"/>
+            <img src="assets/{member['photo']}" class="photo"/>
             <div class="name"><a href="{member['github']}" target="_blank">{member['name']}</a></div>
             <div class="affiliation">{member['affiliation']}</div>
             <div class="role">{member['role']}</div>

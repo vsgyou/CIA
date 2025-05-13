@@ -759,7 +759,8 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
                 ]
 
                 if len(log_df) == 0:
-                    return f"🎯 유사 avatar ID: {avatar_id}", *[gr.update(visible=False) for _ in range(5)]
+                    updates = [gr.update(visible=False) for _ in range(5)]
+                    return (f"🎯 유사 avatar ID: {avatar_id}", *updates)
 
                 log_str = log_df.iloc[0]["log"]
                 parsed_sections = parse_agent_log(log_str)
