@@ -205,7 +205,7 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
             btn_agent4rec = gr.Button("🌐 Agent4Rec: 추천시뮬레이션", elem_classes=["left-btn"])
-            btn_ccl = gr.Button("🔀 CCL: dd", elem_classes=["left-btn"])
+            btn_ccl = gr.Button("🔀 CCL: Confounder에 의한 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
             btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
             
