@@ -12,7 +12,8 @@ import pages.page1_agent4rec as a4r
 import pages.page2_CCL as CCL
 import pages.page3_pda as pda
 
-
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 ## Data Load
 a4r_path = "./data/page1_simulation_data/agent4rec_simulation_result_all_300_5_4_new_trait.csv"
 a4r_df, a4r_policy_list = a4r.load_csv(a4r_path)
