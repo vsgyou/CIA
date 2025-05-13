@@ -39,43 +39,8 @@ team_members = [
         "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
         "github": "https://www.linkedin.com/in/sanghyeon/",
         "photo": "assets/sanghyeon.png"
-    },{
-        "name": "이상현",
-        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
-        "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
-        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
-        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
-        "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "assets/sanghyeon.png"
-    },{
-        "name": "이상현",
-        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
-        "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
-        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
-        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
-        "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "assets/sanghyeon.png"
-    },{
-        "name": "이상현",
-        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
-        "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
-        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
-        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
-        "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "assets/sanghyeon.png"
-    },{
-        "name": "이상현",
-        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
-        "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
-        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
-        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
-        "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "assets/sanghyeon.png"
-    },{
+    },
+    {
         "name": "김지호",
         "affiliation": "GloZ / AI 팀",
         "role": "AI Engineer (LLM)",
@@ -153,9 +118,49 @@ def build_member_grid_html(team_members):
     return html
 
 def build_members():
-    with gr.Blocks() as demo:
-        gr.Markdown("## 👥 팀원 소개\n각자의 기술과 데모를 확인해보세요.")
+    with gr.Column() as demo:
+        gr.Markdown("""
+            # 🎯 Causal Intent Agent (CIA)
+            ## 데이터 속 숨겨진 취향을 분석하여 개인화된 Agent 만들기
+            ### [현업 AI 개발자들의 Pseudo Lab 프로젝트]
+            - ⚖️ 추천시스템에서 발생하는 다양한 데이터 편향을 인과추론 기법으로 해결  
+            - 🧩 기존 추천시스템과 함께 작동할 수 있는 모듈형 CIA 구축  
+            - ⚙️ 오픈소스 프레임워크 개발로 Full-Stack 개발에 익숙해지기
+            """)
+        with gr.Row():
+            with gr.Column(scale=3):  # 왼쪽: 텍스트
+                gr.Markdown("""
+                > 🎯 **CIA*는  
+                > 사용자가 콘텐츠를 **왜 선택했는지**,  
+                > 그리고 추천 시스템이 **왜 그걸 추천했는지**를 함께 분석합니다.  
+                >
+                > 단순한 클릭 이력이 아니라,  
+                > **선택의 이유와 맥락(의도)** 을 인과추론으로 파악하고,  
+                > 추천 결과의 **의미까지 이해하는 AI 에이전트**를 지향합니다.  
+                >
+                > 사람의 관점에서 **납득 가능한 추천**을 만드는 것이 목표입니다.
+                """)
+
+            with gr.Column(scale=4):  # 오른쪽: 이미지
+                gr.Markdown("""
+                >           
+                >           
+                >
+                ><img src = "https://sanghyeon-recsys.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0762d424-f182-4525-a36d-7dfce0af78dc%2F5c51bc2c-b938-4d65-82b7-8775cae18ff2%2FUntitled.png?table=block&id=3a556962-bce5-4b88-b881-f3509c3e8b8b&spaceId=0762d424-f182-4525-a36d-7dfce0af78dc&width=1920&userId=&cache=v2" width="800px;"/> <br/>          
+                >
+                >
+                """)
+        gr.Markdown("""
+        ---
+        # CIA Agents 🕵️
+        """)
         gr.HTML(build_member_grid_html(team_members))
+        gr.Markdown("""
+            ## Acknowledgement
+            Causal Intent Agent is developed as part of Pseudo-Lab's Open Research Initiative. Special thanks to our contributors and the open source community for their valuable insights and contributions.
+            ## About Pseudo Lab
+            Pseudo-Lab is a non-profit organization focused on advancing machine learning and AI technologies. Our core values of Sharing, Motivation, and Collaborative Joy drive us to create impactful open-source projects. With over 5k+ researchers, we are committed to advancing machine learning and AI technologies.            
+            """)
     return demo
 
 
@@ -197,21 +202,13 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
     with gr.Row():
         with gr.Column(scale=1):
             gr.Image("./assets/cia_logo.png", show_label=False, container=False, height=150)
-            gr.Markdown("""
-            # 🎯 Causal Intent Agent
-            ### 데이터 속 숨겨진 취향을 분석하여 개인화된 Agent 만들기
-            ### [현업 AI 개발자들의 Pseudo Lab 프로젝트]
-            ⚖️ 추천시스템에서 발생하는 다양한 데이터 편향을 인과추론 기법으로 해결  
-            🧩 기존 추천시스템과 함께 작동할 수 있는 모듈형 CIA 구축  
-            ⚙️ 오픈소스 프레임워크 개발로 Full-Stack 개발에 익숙해지기  
-            **Acknowledgement**
-            - Pseudo Lab (a non-profit community that aim to gather people interested in DS, ML, AI.)
-            """)
+            
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
             btn_agent4rec = gr.Button("🌐 Agent4Rec: 추천시뮬레이션", elem_classes=["left-btn"])
             btn_ccl = gr.Button("🔀 CCL: dd", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
             btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
+            
         with gr.Column(scale=5):
             page_members = build_members()
             page_agent4rec = build_agent4rec()
@@ -228,17 +225,10 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             page_cor_summary: gr.update(visible=(target == "cor_summary")),
         }
 
-    # target 값을 고정된 상태로 전달
-    target_members = gr.State("members")
-    target_agent4rec = gr.State("agent4rec")
-    target_ccl = gr.State("ccl")
-    target_pda = gr.State("pda")
-    target_cor_summary = gr.State("cor_summary")
-
-    btn_members.click(fn=show_page, inputs=[target_members], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_agent4rec.click(fn=show_page, inputs=[target_agent4rec], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_ccl.click(fn=show_page, inputs=[target_ccl], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_pda.click(fn=show_page, inputs=[target_pda], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_cor_summary.click(fn=show_page, inputs=[target_cor_summary], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_members.click(fn=lambda: show_page("members"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_agent4rec.click(fn=lambda: show_page("agent4rec"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_ccl.click(fn=lambda: show_page("ccl"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_pda.click(fn=lambda: show_page("pda"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_cor_summary.click(fn=lambda: show_page("cor_summary"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
 
 demo.launch()
