@@ -21,6 +21,12 @@ a4r_log_path = "./data/page1_simulation_data/simulation_logs.csv"
 a4r_user_df = a4r.load_sim_csv(a4r_user_path)
 a4r_log_df = a4r.load_sim_csv(a4r_log_path)
 
+import base64
+
+def encode_image_to_base64(path):
+    with open(path, "rb") as f:
+        encoded = base64.b64encode(f.read()).decode()
+    return f"data:image/png;base64,{encoded}"
 
 team_members = [
     {
@@ -31,70 +37,66 @@ team_members = [
         "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
         "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
         "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "sanghyeon.png"
-    },
-    {
-        "name": "나는 예시에요",
-        "affiliation": "PseudoLab / AI 연구팀",
-        "role": "프론트엔드 및 인터페이스 설계",
-        "intro": "시각화로 데이터에 생명을 불어넣는 디자이너",
-        "demo_title": "추천 결과 시각화 UI",
-        "demo_desc": "시뮬레이션 로그를 페이지별 카드로 시각화",
-        "github": "",
-        "photo": "https://avatars.githubusercontent.com/u/2?v=4"
-    },
-    {
-        "name": "나는 예시에요",
-        "affiliation": "PseudoLab / AI 연구팀",
-        "role": "프론트엔드 및 인터페이스 설계",
-        "intro": "시각화로 데이터에 생명을 불어넣는 디자이너",
-        "demo_title": "추천 결과 시각화 UI",
-        "demo_desc": "시뮬레이션 로그를 페이지별 카드로 시각화",
-        "github": "",
-        "photo": "https://avatars.githubusercontent.com/u/2?v=4"
-    },
-    {
-        "name": "나는 예시에요",
-        "affiliation": "PseudoLab / AI 연구팀",
-        "role": "프론트엔드 및 인터페이스 설계",
-        "intro": "시각화로 데이터에 생명을 불어넣는 디자이너",
-        "demo_title": "추천 결과 시각화 UI",
-        "demo_desc": "시뮬레이션 로그를 페이지별 카드로 시각화",
-        "github": "",
-        "photo": "https://avatars.githubusercontent.com/u/2?v=4"
-    },
-    {
-        "name": "나는 예시에요",
-        "affiliation": "PseudoLab / AI 연구팀",
-        "role": "프론트엔드 및 인터페이스 설계",
-        "intro": "시각화로 데이터에 생명을 불어넣는 디자이너",
-        "demo_title": "추천 결과 시각화 UI",
-        "demo_desc": "시뮬레이션 로그를 페이지별 카드로 시각화",
-        "github": "",
-        "photo": "https://avatars.githubusercontent.com/u/2?v=4"
-    },
-    {
-        "name": "나는 예시에요",
-        "affiliation": "PseudoLab / AI 연구팀",
-        "role": "프론트엔드 및 인터페이스 설계",
-        "intro": "시각화로 데이터에 생명을 불어넣는 디자이너",
-        "demo_title": "추천 결과 시각화 UI",
-        "demo_desc": "시뮬레이션 로그를 페이지별 카드로 시각화",
-        "github": "",
-        "photo": "https://avatars.githubusercontent.com/u/2?v=4"
+        "photo": "assets/sanghyeon.png"
+    },{
+        "name": "이상현",
+        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
+        "role": "IPTV 추천시스템 및 예측 모델 개발",
+        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
+        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
+        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
+        "github": "https://www.linkedin.com/in/sanghyeon/",
+        "photo": "assets/sanghyeon.png"
+    },{
+        "name": "이상현",
+        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
+        "role": "IPTV 추천시스템 및 예측 모델 개발",
+        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
+        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
+        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
+        "github": "https://www.linkedin.com/in/sanghyeon/",
+        "photo": "assets/sanghyeon.png"
+    },{
+        "name": "이상현",
+        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
+        "role": "IPTV 추천시스템 및 예측 모델 개발",
+        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
+        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
+        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
+        "github": "https://www.linkedin.com/in/sanghyeon/",
+        "photo": "assets/sanghyeon.png"
+    },{
+        "name": "이상현",
+        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
+        "role": "IPTV 추천시스템 및 예측 모델 개발",
+        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
+        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
+        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
+        "github": "https://www.linkedin.com/in/sanghyeon/",
+        "photo": "assets/sanghyeon.png"
+    },{
+        "name": "이상현",
+        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
+        "role": "IPTV 추천시스템 및 예측 모델 개발",
+        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
+        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
+        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
+        "github": "https://www.linkedin.com/in/sanghyeon/",
+        "photo": "assets/sanghyeon.png"
     },
     # ... 추가 구성원
 ]
 
-
-
+# 이미지 인코딩 처리
+for member in team_members:
+    member["photo"] = encode_image_to_base64(member["photo"])
 
 def build_member_grid_html(team_members):
     cards_html = ""
     for member in team_members:
         card = f"""
         <div class="card">
-            <img src="assets/{member['photo']}" class="photo"/>
+            <img src="{member['photo']}" class="photo"/>
             <div class="name"><a href="{member['github']}" target="_blank">{member['name']}</a></div>
             <div class="affiliation">{member['affiliation']}</div>
             <div class="role">{member['role']}</div>
@@ -104,7 +106,6 @@ def build_member_grid_html(team_members):
         """
         cards_html += card
 
-    # 전체 그리드 레이아웃
     html = f"""
     <style>
         .grid {{
@@ -114,12 +115,12 @@ def build_member_grid_html(team_members):
             padding: 16px;
         }}
         .card {{
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 12px;
             padding: 16px;
             text-align: center;
-            background-color: #f9f9f9;
-            box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }}
         .photo {{
             width: 100px;
@@ -128,11 +129,11 @@ def build_member_grid_html(team_members):
             object-fit: cover;
             margin-bottom: 10px;
         }}
-        .name {{ font-weight: bold; font-size: 16px; margin: 4px 0; }}
-        .affiliation {{ font-size: 13px; color: #666; }}
-        .role {{ font-size: 13px; margin: 4px 0; }}
-        .intro {{ font-style: italic; font-size: 13px; margin-bottom: 8px; }}
-        .demo {{ font-size: 13px; }}
+        .name {{ font-weight: bold; font-size: 16px; }}
+        .affiliation, .role, .intro, .demo {{
+            font-size: 13px;
+            margin: 4px 0;
+        }}
     </style>
     <div class="grid">
         {cards_html}
@@ -141,13 +142,10 @@ def build_member_grid_html(team_members):
     return html
 
 def build_members():
-    with gr.Column(visible=True) as members:
-        gr.Markdown("## 👥 팀원 소개\n_각자의 기술과 관심사를 담은 데모를 확인해보세요_")
-        html = build_member_grid_html(team_members)
-        gr.HTML(html)
-    
-    return members
-
+    with gr.Blocks() as demo:
+        gr.Markdown("## 👥 팀원 소개\n각자의 기술과 데모를 확인해보세요.")
+        gr.HTML(build_member_grid_html(team_members))
+    return demo
 
 def build_agent4rec():
     with gr.Column(visible=False) as agent4rec:
