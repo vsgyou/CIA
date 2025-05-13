@@ -66,14 +66,14 @@ team_members = [
         "github": "https://www.linkedin.com/in/sanghyeon/",
         "photo": "assets/sanghyeon.png"
     },{
-        "name": "이상현",
-        "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
-        "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
-        "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
-        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
-        "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "assets/sanghyeon.png"
+        "name": "황영산",
+        "affiliation": "프라이데이즈랩 / Product 팀",
+        "role": "Data Scientist",
+        "intro": "마케팅 솔루션 프로덕을 개발하고 있습니다",
+        "demo_title": "PDA: 인기도 편향 제거 및 활용용",
+        "demo_desc": "인과 그래프로 아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
+        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
+        "photo": "assets/yeongsan.png"
     },{
         "name": "김지호",
         "affiliation": "GloZ / AI 팀",
