@@ -749,7 +749,8 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
                 avatar_id = find_most_similar_avatar(policy, rerank, user_traits, taste_keywords, df_user)
 
                 if avatar_id < 0:
-                    return "😢 입력한 고객 특성과 동일한 아바타를 찾지 못했습니다.", *[gr.update(visible=False) for _ in range(5)]
+                    updates = [gr.update(visible=False) for _ in range(5)]
+                    return ("😢 입력한 고객 특성과 동일한 아바타를 찾지 못했습니다.", *updates)
 
                 log_df = df_log[
                     (df_log.avatar_id == avatar_id) &

@@ -30,7 +30,7 @@ team_members = [
         "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
         "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
         "github": "https://www.linkedin.com/in/sanghyeon/",
-        "photo": "./assets/sanghyeon.png"
+        "photo": "sanghyeon.png"
     },
     {
         "name": "나는 예시에요",
@@ -93,7 +93,7 @@ def build_member_grid_html(team_members):
     for member in team_members:
         card = f"""
         <div class="card">
-            <img src="{member['photo']}" class="photo"/>
+            <img src="./assets/{member['photo']}" class="photo"/>
             <div class="name"><a href="{member['github']}" target="_blank">{member['name']}</a></div>
             <div class="affiliation">{member['affiliation']}</div>
             <div class="role">{member['role']}</div>
