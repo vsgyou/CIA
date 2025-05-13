@@ -61,7 +61,7 @@ team_members = [
     },
     {
         "name": "장원혁",
-        "affiliation": "LG전자 / 음성기술팀",
+        "affiliation": "LG전자 / 음성지능팀",
         "role": "음성엔진구축",
         "intro": "ㅇㅇㅇ",
         "demo_title": "na",
@@ -213,7 +213,7 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             gr.Image("./assets/cia_logo.png", show_label=False, container=False, height=150)
             
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
-            btn_agent4rec = gr.Button("🌐 Agent4Rec: 추천시뮬레이션", elem_classes=["left-btn"])
+            btn_agent4rec = gr.Button("🌐 Agent4Rec: \n고객 Agent 기반 추천 시뮬레이션", elem_classes=["left-btn"])
             btn_ccl = gr.Button("🔀 CCL: dd", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
             btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
