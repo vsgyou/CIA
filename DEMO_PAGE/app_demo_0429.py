@@ -77,7 +77,7 @@ team_members = [
         "demo_title": "PDA: 인기도 편향 제거 및 활용용",
         "demo_desc": "인과 그래프로 아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
         "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
-        "photo": "assets/yeongsan.png"
+        "photo": "assets/sanghyeon.png"
     }
     # ... 추가 구성원
 ]
