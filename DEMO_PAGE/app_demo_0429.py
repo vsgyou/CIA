@@ -11,8 +11,10 @@ from pages.page7_cor_paper import render as render_page7
 import pages.page1_agent4rec as a4r
 import pages.page2_CCL as CCL
 import pages.page3_pda as pda
+import pages.page8_main as DICE_REC
 
-
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 ## Data Load
 a4r_path = "./data/page1_simulation_data/agent4rec_simulation_result_all_300_5_4_new_trait.csv"
 a4r_df, a4r_policy_list = a4r.load_csv(a4r_path)
@@ -62,13 +64,14 @@ team_members = [
     {
         "name": "장원혁",
         "affiliation": "LG전자 / 음성지능팀",
-        "role": "음성엔진구축",
-        "intro": "ㅇㅇㅇ",
-        "demo_title": "na",
-        "demo_desc": "na",
+        "role": "AI Scientist (Speech Recognition, LLM)",
+        "intro": "Speech, LLM 기반의 다양한 AI 및 Multimodal 엔진 개발",
+        "demo_title": "DICE 모델 구현",
+        "demo_desc": "DICE 모델 구현 및 LLM 정보를 활용하는 DICE 추천 모델 개발 (추후 통합 예정)",
         "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4/",
-        "photo": "assets/sanghyeon.png"
+        "photo": "assets/profile_wonhyuk.png"
     },
+<<<<<<< HEAD
     {
         "name": "황영산",
         "affiliation": "프라이데이즈랩 / Product 팀",
@@ -79,6 +82,8 @@ team_members = [
         "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
         "photo": "assets/sanghyeon.png"
     }
+=======
+>>>>>>> da7faa5e5dbf86b03b88fc70ea17bce865f4384f
     # ... 추가 구성원
 ]
 
@@ -203,6 +208,11 @@ def build_cor_summary():
         render_page7()
     return cor_summary
 
+def build_DICE_REC():
+    with gr.Column(visible=False) as dice_rec:
+        DICE_REC.page8_ui()
+    return dice_rec
+        
 def build_profile():
     with gr.Column(visible=False) as profile:
         with gr.Tabs():
@@ -223,17 +233,19 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             gr.Image("./assets/cia_logo.png", show_label=False, container=False, height=150)
             
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
-            btn_agent4rec = gr.Button("🌐 Agent4Rec: \n고객 Agent 기반 추천 시뮬레이션", elem_classes=["left-btn"])
-            btn_ccl = gr.Button("🔀 CCL: dd", elem_classes=["left-btn"])
+            btn_agent4rec = gr.Button("🌐 Agent4Rec: 고객 Agent 기반<br/> 추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
+            btn_ccl = gr.Button("🔀 CCL: Confounder에 의한<br/> 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
             btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
+            btn_dice_rec = gr.Button("📄 DICE & LLM Rec 논문 구현", elem_classes=["left-btn"])
             
-        with gr.Column(scale=5):
+        with gr.Column(scale=6):
             page_members = build_members()
             page_agent4rec = build_agent4rec()
             page_ccl = build_ccl()
             page_pda = build_pda()
             page_cor_summary = build_cor_summary()
+            page_dice_rec = build_DICE_REC()
 
     def show_page(target):
         return {
@@ -242,12 +254,14 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             page_ccl: gr.update(visible=(target == "ccl")),
             page_pda: gr.update(visible=(target == "pda")),
             page_cor_summary: gr.update(visible=(target == "cor_summary")),
+            page_dice_rec: gr.update(visible=(target == "dice_rec")),            
         }
 
-    btn_members.click(fn=lambda: show_page("members"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_agent4rec.click(fn=lambda: show_page("agent4rec"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_ccl.click(fn=lambda: show_page("ccl"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_pda.click(fn=lambda: show_page("pda"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
-    btn_cor_summary.click(fn=lambda: show_page("cor_summary"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary])
+    btn_members.click(fn=lambda: show_page("members"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
+    btn_agent4rec.click(fn=lambda: show_page("agent4rec"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
+    btn_ccl.click(fn=lambda: show_page("ccl"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
+    btn_pda.click(fn=lambda: show_page("pda"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
+    btn_cor_summary.click(fn=lambda: show_page("cor_summary"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
+    btn_dice_rec.click(fn=lambda: show_page("dice_rec"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
 
 demo.launch()
