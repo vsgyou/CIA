@@ -234,7 +234,7 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             btn_agent4rec = gr.Button("🌐  <b>Agent4Rec: 고객 Agent 기반</b><br/>추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
             btn_ccl = gr.Button("🔀  <b>CCL: Confounder에 의한</b><br/>노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝  <b>PDA: </b><br/>dd", elem_classes=["left-btn"])
-            btn_cor_summary = gr.Button("📄 <b>COR: </b><br/>논문 구현", elem_classes=["left-btn"])
+            btn_cor_summary = gr.Button("📄 <b>COR-G: 장기/단기 선호 분리 기반</b><br/> 인과적 추천 시스템 구현", elem_classes=["left-btn"])
             btn_dice_rec = gr.Button("📄 <b>DICE & LLM Rec</b><br/> 논문 구현", elem_classes=["left-btn"])
             
         with gr.Column(scale=5):
