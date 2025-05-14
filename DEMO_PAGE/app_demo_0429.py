@@ -34,9 +34,9 @@ team_members = [
         "name": "이상현",
         "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
         "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "사용자 행동의 인과를 찾고 싶은 AI 엔지니어",
+        "intro": "고객의 숨겨진 의도를 찾아 고객이 원하는 추천시스템을 개발하는 AI 엔지니어",
         "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
-        "demo_desc": "**고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 인과적으로 분석",
+        "demo_desc": "고객 페르소나 기반 Agent를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 고객 특성과 어떻게 상호작용하며 영향을 미치는지를 인과적으로 분석",
         "github": "https://www.linkedin.com/in/sanghyeon/",
         "photo": "assets/sanghyeon.png"
     },
@@ -54,12 +54,32 @@ team_members = [
         "name": "정지운",
         "affiliation": "취업준비생 / 추천 시스템 희망",
         "role": "추천 시스템 인기 편향 완화",
-        "intro": "다양한 아이템이 포함된 리스트 제공을 통한 사용자 경험 개선선",
+        "intro": "다양한 아이템이 포함된 리스트 제공을 통한 사용자 경험 개선",
         "demo_title": "CCL: 시스템에서 발생하는 노출 편향을 완화시키는 논문 구현",
         "demo_desc": "**혼란변수(confounder)에 의해 발생하는 노출편향을 완화시키기 위해 **데이터 증강**을 통해 다양한 아이템이 노출된 상황을 시뮬레이션",
         "github": "https://www.linkedin.com/in/jeongjiun",
         "photo": "assets/jiun.png"
     },
+    {
+        "name": "장원혁",
+        "affiliation": "LG전자 / 음성지능팀",
+        "role": "음성엔진구축",
+        "intro": "ㅇㅇㅇ",
+        "demo_title": "na",
+        "demo_desc": "na",
+        "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4/",
+        "photo": "assets/sanghyeon.png"
+    },
+    {
+        "name": "황영산",
+        "affiliation": "프라이데이즈랩 / Product 팀",
+        "role": "Data Scientist",
+        "intro": "마케팅 솔루션 프로덕을 개발하고 있습니다",
+        "demo_title": "PDA: 인기도 편향 제거 및 활용용",
+        "demo_desc": "인과 그래프로 아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
+        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
+        "photo": "assets/yeongsan.png"
+    }
     # ... 추가 구성원
 ]
 
@@ -204,8 +224,8 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             gr.Image("./assets/cia_logo.png", show_label=False, container=False, height=150)
             
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
-            btn_agent4rec = gr.Button("🌐 Agent4Rec: 추천시뮬레이션", elem_classes=["left-btn"])
-            btn_ccl = gr.Button("🔀 CCL: Confounder에 의한 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
+            btn_agent4rec = gr.Button("🌐 Agent4Rec: 고객 Agent 기반<br/> 추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
+            btn_ccl = gr.Button("🔀 CCL: Confounder에 의한<br/> 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
             btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
             
