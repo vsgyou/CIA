@@ -45,9 +45,9 @@ team_members = [
         "name": "김지호",
         "affiliation": "GloZ / AI 팀",
         "role": "AI Engineer (LLM)",
-        "intro": "LLM 기반 멀티에이전트 시스템 기획 및 개발을 수행하고 있습니다.",
-        "demo_title": "COR 논문 구현",
-        "demo_desc": "COR 논문 리뷰, 모델 기반 실험, 추천 에이전트 데모 탭을 구현했습니다.",
+        "intro": "LLM 기반 사내 업무 자동화 시스템 기획 및 개발",
+        "demo_title": "COR : 장기/단기 선호 분리 기반 인과적 추천 시스템 구현",
+        "demo_desc": "사용자의 장기/단기 선호를 분리 표현하는 인과 기반 추천 논문(COR)을 구현하고, 추천 시나리오와 해석 가능한 설명을 포함한 데모 제작",
         "github": "https://github.com/jy0jy0/CIA/tree/main/COR",
         "photo": "assets/profile_jiho.png"
     },
