@@ -12,7 +12,8 @@ import pages.page1_agent4rec as a4r
 import pages.page2_CCL as CCL
 import pages.page3_pda as pda
 
-
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 ## Data Load
 a4r_path = "./data/page1_simulation_data/agent4rec_simulation_result_all_300_5_4_new_trait.csv"
 a4r_df, a4r_policy_list = a4r.load_csv(a4r_path)
@@ -223,8 +224,8 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             gr.Image("./assets/cia_logo.png", show_label=False, container=False, height=150)
             
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
-            btn_agent4rec = gr.Button("🌐 Agent4Rec: \n고객 Agent 기반 추천 시뮬레이션", elem_classes=["left-btn"])
-            btn_ccl = gr.Button("🔀 CCL: dd", elem_classes=["left-btn"])
+            btn_agent4rec = gr.Button("🌐 Agent4Rec: 고객 Agent 기반<br/> 추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
+            btn_ccl = gr.Button("🔀 CCL: Confounder에 의한<br/> 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
             btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
             
