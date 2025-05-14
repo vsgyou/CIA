@@ -71,7 +71,6 @@ team_members = [
         "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4/",
         "photo": "assets/profile_wonhyuk.png"
     },
-<<<<<<< HEAD
     {
         "name": "황영산",
         "affiliation": "프라이데이즈랩 / Product 팀",
@@ -82,8 +81,6 @@ team_members = [
         "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
         "photo": "assets/sanghyeon.png"
     }
-=======
->>>>>>> da7faa5e5dbf86b03b88fc70ea17bce865f4384f
     # ... 추가 구성원
 ]
 
@@ -236,7 +233,7 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             btn_agent4rec = gr.Button("🌐 Agent4Rec: 고객 Agent 기반<br/> 추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
             btn_ccl = gr.Button("🔀 CCL: Confounder에 의한<br/> 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
             btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
-            btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
+            btn_cor_summary = gr.Button("📊 COR-G: 장기/단기 선호 분리 기반 인과적 추천 시스템 구현", elem_classes=["left-btn"])
             btn_dice_rec = gr.Button("📄 DICE & LLM Rec 논문 구현", elem_classes=["left-btn"])
             
         with gr.Column(scale=6):

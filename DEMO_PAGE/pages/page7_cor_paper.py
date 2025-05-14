@@ -1,4 +1,12 @@
+import os
+import numpy as np
+import torch
+from scipy.sparse import lil_matrix
+from dotenv import load_dotenv
 import gradio as gr
+from pages.page7_cor_model import COR_G
+from openai import OpenAI
+
 
 ######################  1. 논문 소개 탭 ###################### 
 def render_tab_paper_summary():
@@ -121,7 +129,129 @@ def render_tab_experiment_results():
 ####################### 3. COR Agent #######################
 def render_tab_cor_agent():
     with gr.Tab("3. COR Agent"):
-        gr.Markdown("🤖 준비 중입니다. COR 기반 에이전트 구조 및 데모를 연결할 예정입니다.")
+        gr.Markdown("## 🎯 COR_G 기반 인과적 추천 에이전트 데모")
+        gr.Markdown("""
+        ### ✅ COR_G 구조 설명
+        
+        1. **이 추천이 사용자의 어떤 취향(장기/단기)에 기반했는지**  
+        - COR_G 모델은 사용자의 장기적 취향(Z1)과 단기적 맥락 기반 취향(Z2)을 모두 고려합니다.  
+        - 또한 아이템 간 상호 작용과 사용자 행동을 함께 반영하는 **인과 구조**를 학습합니다.
+
+        2. **기존 CF/유사도 기반 추천과의 차별점**  
+        - 기존 CF 기반 추천은 단순한 유사도 계산에 기반하므로 **맥락 변화에 민감하지 못한 한계**가 있습니다.  
+        - COR_G는 Z1/Z2를 분리 학습하고 **인과 구조를 통해 복잡한 사용자 행동을 반영**합니다.
+
+        3. **COR_G가 이 추천에 신뢰도를 부여하는 이유**  
+        - COR_G는 **인과 추론 기반 모델**로, 사용자 행동의 원인-결과 관계를 반영합니다.  
+        - 이를 통해 **각 추천에 대한 해석 가능성과 신뢰도**를 높입니다.
+        """)
+
+        user_input = gr.Number(label="🔢 User ID", value=7)
+        run_button = gr.Button("🔍 추천 생성")
+
+        output_text = gr.Textbox(label="추천 결과 및 설명", lines=25)
+
+        def generate_recommendation(user_id):
+            # 경로 설정
+            base_path = "./data/page7_data_n_model/yelp/"
+            weight_path = "./data/page7_data_n_model/cor_g_weights.pth"
+
+            # 데이터 로드
+            user_feat_tensor = torch.FloatTensor(np.load(os.path.join(base_path, "user_feature.npy")))
+            item_feat_tensor = torch.FloatTensor(np.load(os.path.join(base_path, "item_feature.npy")))
+            interaction_matrix = np.load(os.path.join(base_path, "training_list.npy"), allow_pickle=True)
+
+            # Sparse interaction matrix
+            n_users = user_feat_tensor.shape[0]
+            n_items = item_feat_tensor.shape[0]
+            interaction_mat = lil_matrix((n_users, n_items))
+            for u, i in interaction_matrix:
+                interaction_mat[u, i] = 1
+            interaction_mat = interaction_mat.tocsr()
+
+            # 인과 그래프 정의
+            E1_size = user_feat_tensor.shape[1]
+            E2_size = 20
+            Z1_size = 8
+            Z2_size = 20
+            adj_tensor = torch.ones((Z1_size, E1_size + E2_size)).float()
+
+            # 모델 초기화 및 가중치 로드
+            model = COR_G(
+                mlp_q_dims=[n_items + E1_size, 600, 400, E2_size],
+                mlp_p1_1_dims=[1, 200, 300],
+                mlp_p1_2_dims=[300, 1],
+                mlp_p2_dims=[E2_size, Z2_size],
+                mlp_p3_dims=[Z1_size * 1 + Z2_size, 20, n_items],
+                item_feature=item_feat_tensor,
+                adj=adj_tensor,
+                E1_size=E1_size,
+                dropout=0.4,
+                bn=1,
+                sample_freq=3,
+                regs=0.0,
+                act_function='tanh'
+            )
+            model.load_state_dict(torch.load(weight_path, map_location="cpu"))
+            model.eval()
+
+            # 추천 수행
+            user_vec = interaction_mat[user_id].toarray()
+            user_vec_tensor = torch.FloatTensor(user_vec)
+            user_tensor = user_feat_tensor[user_id].unsqueeze(0)
+
+            with torch.no_grad():
+                recon, mu, _, _ = model(user_vec_tensor, user_tensor, None, CI=0)
+                scores = recon.squeeze()
+                top_k_items = torch.topk(scores, 10).indices.tolist()
+
+            # OpenAI API로 설명 생성
+            load_dotenv()
+            api_key = os.getenv("OPENAI_API_KEY")
+            client = OpenAI(api_key=api_key)
+
+            prompt = f"""
+다음은 COR_G (Causal User Modeling for Out-of-Distribution Recommendation) 모델을 통해 생성된 추천 결과입니다.
+
+이 모델은 사용자 취향을 두 가지 표현으로 분리하여 학습합니다:
+- Z1: 사용자의 장기적, 누적 선호를 반영하는 잠재 표현
+- Z2: 최근 행동과 맥락 기반의 단기 선호 표현
+
+이 두 표현은 인과 그래프(adj)를 통해 결합되며, 결과적으로 다음과 같은 특성을 가집니다:
+1. 장기 + 단기 취향을 모두 고려한 정밀한 추천
+2. 유사도 기반 CF보다 설명 가능성과 일반화 성능이 높음
+3. 사용자 행동의 원인-결과 관계를 반영한 신뢰 가능한 추천
+
+---
+
+추천 결과는 다음과 같습니다. 각 아이템은 장기/단기 선호 중 어떤 요소에 기반했는지 명시하여 설명해주세요.
+
+- 사용자 ID: {user_id}
+- 추천 Top 10 아이템: {top_k_items}
+
+각 아이템별로 아래 형식을 참고하여 인과적 추천 이유를 작성해주세요:
+
+예시 출력 형식:
+
+- 아이템 19310: 사용자의 장기적 선호(Z1)와 최근 행동(Z2)을 모두 반영하는 대표 아이템입니다. 과거에 선호한 주제와 유사한 특징을 가지며, 최근 검색/클릭 패턴과도 일치합니다.
+- 아이템 31895: 장기 선호(Z1)에 따라 과거 즐겨본 콘텐츠와 유사한 속성을 가지며, 최근에 관심을 보인 주제(Z2)와도 관련되어 있습니다.
+- 아이템 52939: 장기 취향(Z1)을 중심으로 추천되었으며, 최근 맥락(Z2)과는 약한 관련이 있지만 Z1 기반에서 높은 적합도를 보입니다.
+
+반드시 위 형식을 따라 10개 아이템 각각에 대해 구체적이고 직관적인 설명을 제공해주세요.
+설명은 단정적이고 명확한 어조로 작성합니다.
+"""
+
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            description = response.choices[0].message.content.strip()
+
+            # 전체 출력 구성
+            full_output = f"✅ 추천 결과 (Top 10): {top_k_items}\n\n🔍 인과적 추천 설명:\n{description}"
+            return full_output
+
+        run_button.click(fn=generate_recommendation, inputs=[user_input], outputs=[output_text])
 
 
 def build_cor_summary():
