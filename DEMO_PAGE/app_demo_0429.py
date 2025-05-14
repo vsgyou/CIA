@@ -68,10 +68,9 @@ team_members = [
         "intro": "Speech, LLM 기반의 다양한 AI 및 Multimodal 엔진 개발",
         "demo_title": "DICE 모델 구현",
         "demo_desc": "DICE 모델 구현 및 LLM 정보를 활용하는 DICE 추천 모델 개발 (추후 통합 예정)",
-        "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4/",
+        "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4",
         "photo": "assets/profile_wonhyuk.png"
     },
-<<<<<<< HEAD
     {
         "name": "황영산",
         "affiliation": "프라이데이즈랩 / Product 팀",
@@ -79,11 +78,9 @@ team_members = [
         "intro": "마케팅 솔루션 프로덕을 개발하고 있습니다",
         "demo_title": "PDA: 인기도 편향 제거 및 활용용",
         "demo_desc": "인과 그래프로 아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
-        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
+        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a",
         "photo": "assets/sanghyeon.png"
     }
-=======
->>>>>>> da7faa5e5dbf86b03b88fc70ea17bce865f4384f
     # ... 추가 구성원
 ]
 
@@ -91,11 +88,44 @@ team_members = [
 for member in team_members:
     member["photo"] = encode_image_to_base64(member["photo"])
 
+def member_card_style():
+    return """
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 16px;
+        }
+        .member-card {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .name { font-weight: bold; font-size: 16px; }
+        .affiliation, .role, .intro, .demo {
+            font-size: 13px;
+            margin: 4px 0;
+        }
+    </style>
+
+    """
+
 def build_member_grid_html(team_members):
     cards_html = ""
     for member in team_members:
         card = f"""
-        <div class="card">
+        <div class="member-card">
             <img src="{member['photo']}" class="photo"/>
             <div class="name"><a href="{member['github']}" target="_blank">{member['name']}</a></div>
             <div class="affiliation">{member['affiliation']}</div>
@@ -105,41 +135,8 @@ def build_member_grid_html(team_members):
         </div>
         """
         cards_html += card
+    return f"<div class='grid'>{cards_html}</div>"
 
-    html = f"""
-    <style>
-        .grid {{
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            padding: 16px;
-        }}
-        .card {{
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }}
-        .photo {{
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }}
-        .name {{ font-weight: bold; font-size: 16px; }}
-        .affiliation, .role, .intro, .demo {{
-            font-size: 13px;
-            margin: 4px 0;
-        }}
-    </style>
-    <div class="grid">
-        {cards_html}
-    </div>
-    """
-    return html
 
 def build_members():
     with gr.Column() as demo:
@@ -180,11 +177,11 @@ def build_members():
         """)
         gr.HTML(build_member_grid_html(team_members))
         gr.Markdown("""
-            ## Acknowledgement
-            Causal Intent Agent is developed as part of Pseudo-Lab's Open Research Initiative. Special thanks to our contributors and the open source community for their valuable insights and contributions.
-            ## About Pseudo Lab
-            Pseudo-Lab is a non-profit organization focused on advancing machine learning and AI technologies. Our core values of Sharing, Motivation, and Collaborative Joy drive us to create impactful open-source projects. With over 5k+ researchers, we are committed to advancing machine learning and AI technologies.            
-            """)
+        ## Acknowledgement
+        Causal Intent Agent is developed as part of Pseudo-Lab's Open Research Initiative. Special thanks to our contributors and the open source community for their valuable insights and contributions.
+        ## About Pseudo Lab
+        Pseudo-Lab is a non-profit organization focused on advancing machine learning and AI technologies. Our core values of Sharing, Motivation, and Collaborative Joy drive us to create impactful open-source projects. With over 5k+ researchers, we are committed to advancing machine learning and AI technologies.            
+        """)
     return demo
 
 
@@ -228,18 +225,19 @@ def build_settings():
     return settings
 
 with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content: flex-start; }") as demo:
+    gr.HTML(member_card_style())  # 스타일 먼저
     with gr.Row():
         with gr.Column(scale=1):
             gr.Image("./assets/cia_logo.png", show_label=False, container=False, height=150)
             
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
-            btn_agent4rec = gr.Button("🌐 Agent4Rec: 고객 Agent 기반<br/> 추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
-            btn_ccl = gr.Button("🔀 CCL: Confounder에 의한<br/> 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
-            btn_pda = gr.Button("🔝 PDA: dd", elem_classes=["left-btn"])
-            btn_cor_summary = gr.Button("📄 COR 논문 구현", elem_classes=["left-btn"])
-            btn_dice_rec = gr.Button("📄 DICE & LLM Rec 논문 구현", elem_classes=["left-btn"])
+            btn_agent4rec = gr.Button("🌐  <b>Agent4Rec: 고객 Agent 기반</b><br/>추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
+            btn_ccl = gr.Button("🔀  <b>CCL: Confounder에 의한</b><br/>노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
+            btn_pda = gr.Button("🔝  <b>PDA: </b><br/>dd", elem_classes=["left-btn"])
+            btn_cor_summary = gr.Button("📄 <b>COR: </b><br/>논문 구현", elem_classes=["left-btn"])
+            btn_dice_rec = gr.Button("📄 <b>DICE & LLM Rec</b><br/> 논문 구현", elem_classes=["left-btn"])
             
-        with gr.Column(scale=6):
+        with gr.Column(scale=5):
             page_members = build_members()
             page_agent4rec = build_agent4rec()
             page_ccl = build_ccl()
