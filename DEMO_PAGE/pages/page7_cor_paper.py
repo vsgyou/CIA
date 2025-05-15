@@ -257,7 +257,7 @@ def render_tab_cor_agent():
 def build_cor_summary():
     with gr.Blocks() as demo:
         gr.Markdown("""
-        # 🧠 Causal Representation Learning for Out-of-Distribution Recommendation
+        # 📑 Causal Representation Learning for Out-of-Distribution Recommendation
 
         논문에 대한 전체 요약을 아래 세 개의 탭으로 구성하여 확인할 수 있습니다:
         """)
