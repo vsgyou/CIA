@@ -326,7 +326,7 @@ def prepare_trait_average_by_page(df, trait_name):
                 "rerank": rerank,
                 "page": page,
                 "trait": trait_name,
-                "trait_avg": subset[trait_name].map({"적게봄":1, "가끔봄":2, "자주봄":3, "독립형":1, "균형형":2, "동조형":3, "취향형":1, "균형형":2, "다양형":3}).mean()
+                "trait_avg": subset[trait_name].map({"적게봄":1, "가끔봄":2, "자주봄":3, "독립형":1, "균형형":2, "동조형":3, "취향형":1, "균형형":2, "탐험형":3}).mean()
             })
     return pd.DataFrame(result)
 
