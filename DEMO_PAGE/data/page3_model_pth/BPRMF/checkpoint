@@ -1,0 +1,3 @@
+model_checkpoint_path: "/home/san/PDA/save_model/mf_ml-1m_checkpoint/wd_0.01_lr_0.01_a_0.001_mf_ml1mpop_exp-0.22_train_normal/best_main_ckpt.ckpt"
+all_model_checkpoint_paths: "/home/san/PDA/save_model/mf_ml-1m_checkpoint/wd_0.01_lr_0.01_a_0.001_mf_ml1mpop_exp-0.22_train_normal/best_ckpt.ckpt"
+all_model_checkpoint_paths: "/home/san/PDA/save_model/mf_ml-1m_checkpoint/wd_0.01_lr_0.01_a_0.001_mf_ml1mpop_exp-0.22_train_normal/best_main_ckpt.ckpt"
