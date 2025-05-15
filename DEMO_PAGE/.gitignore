@@ -1,3 +1,9 @@
 .DS_Store
 __pycache__/
 cia-env/
+.env
+*.pth
+__pycache__/.DS_Store
+cia-env/
+data/
+

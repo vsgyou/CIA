@@ -45,9 +45,9 @@ team_members = [
         "name": "김지호",
         "affiliation": "GloZ / AI 팀",
         "role": "AI Engineer (LLM)",
-        "intro": "LLM 기반 멀티에이전트 시스템 기획 및 개발을 수행하고 있습니다.",
-        "demo_title": "COR 논문 구현",
-        "demo_desc": "COR 논문 리뷰, 모델 기반 실험, 추천 에이전트 데모 탭을 구현했습니다.",
+        "intro": "LLM 기반 사내 업무 자동화 시스템 기획 및 개발",
+        "demo_title": "COR : 장기/단기 선호 분리 기반 인과적 추천 시스템 구현",
+        "demo_desc": "사용자의 장기/단기 선호를 분리 표현하는 인과 기반 추천 논문(COR)을 구현하고, 추천 시나리오와 해석 가능한 설명을 포함한 데모 제작",
         "github": "https://github.com/jy0jy0/CIA/tree/main/COR",
         "photo": "assets/profile_jiho.png"
     },
@@ -76,10 +76,10 @@ team_members = [
         "affiliation": "프라이데이즈랩 / Product 팀",
         "role": "Data Scientist",
         "intro": "마케팅 솔루션 프로덕을 개발하고 있습니다",
-        "demo_title": "PDA: 인기도 편향 제거 및 활용용",
-        "demo_desc": "인과 그래프로 아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
-        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a",
-        "photo": "assets/sanghyeon.png"
+        "demo_title": "PDA: 인기도 편향 제거 및 활용 프레임워크",
+        "demo_desc": "아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
+        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
+        "photo": "assets/yeongsan.png"
     }
     # ... 추가 구성원
 ]
@@ -233,8 +233,8 @@ with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
             btn_agent4rec = gr.Button("🌐  <b>Agent4Rec: 고객 Agent 기반</b><br/>추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
             btn_ccl = gr.Button("🔀  <b>CCL: Confounder에 의한</b><br/>노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
-            btn_pda = gr.Button("🔝  <b>PDA: </b><br/>dd", elem_classes=["left-btn"])
-            btn_cor_summary = gr.Button("📄 <b>COR: </b><br/>논문 구현", elem_classes=["left-btn"])
+            btn_pda = gr.Button("🔝  <b>PDA: PDA: 인기도 편향 제거 및 활용 </b><br/>프레임워크", elem_classes=["left-btn"])
+            btn_cor_summary = gr.Button("📄 <b>COR-G: 장기/단기 선호 분리 기반</b><br/> 인과적 추천 시스템 구현", elem_classes=["left-btn"])
             btn_dice_rec = gr.Button("📄 <b>DICE & LLM Rec</b><br/> 논문 구현", elem_classes=["left-btn"])
             
         with gr.Column(scale=5):
