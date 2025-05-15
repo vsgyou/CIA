@@ -133,13 +133,11 @@ def pda_explanation_tab():
     with gr.Column():
         gr.Markdown("""
 <span style='font-size:30px'><strong>🎬 PDA (Popularity‑bias Deconfounding & Adjustment)</strong></span>
-
 ---
 <span style='font-size:24px;color:#FFB300'><strong>1️⃣ 논문 요약</strong></span>
 - ✨ <strong>제안</strong> : 추천 로그 속 <b>인기도(popularity)</b>를 교란 변수로 정의하고,<br>  🔹 <em>PD</em> 단계에서 <u>부정적 편향 제거</u> → 🔸 <em>PDA</em> 단계에서 <u>미래 인기 신호 주입</u> 하는 2‑스텝 프레임워크 제시.
 - 🔍 <strong>검증</strong> : Kwai·Douban·Tencent 데이터 실험을 통해 <b>정확도  개선 확인.
 - 💡 <strong>핵심 메시지</strong> : “인기 신호는 <i>불필요한 부분만 걷어내고</i>, <i>앞으로 유익할 부분은 적극 활용</i>한다.”
-
 ---
 <span style='font-size:24px;color:#03A9F4'><strong>2️⃣ 논문 배경 & 연구 문제</strong></span>
 - 🔄 <strong>인기 편향 루프</strong> : 인기 노출 ↑ → 클릭 ↑ → 데이터에 인기 강화 → 다시 노출 ↑ … <br>  ↳ 롱테일·신작은 점점 <span style='color:#F44336'>사라짐</span>.
@@ -149,7 +147,6 @@ def pda_explanation_tab():
   • <em>Ranking Adjustment</em> : 사후 점수 보정 → 이론·효과 불안정<br>
   • <strong>공통</strong> : 인기 신호를 완전히 없애면 정확도 급락.
 - ❓ <strong>연구 질문</strong> : “<b>편향 제거</b>와 <b>인기 활용</b>을 동시에 만족하려면?”
-
 ---
 <span style='font-size:24px;color:#4CAF50'><strong>3️⃣ 연구 목적 & 기여</strong></span>
 - 🎯 <strong>목적</strong>
@@ -157,8 +154,6 @@ def pda_explanation_tab():
   2. 예측된 <em>미래 인기</em>를 점수에 주입해 정확도·다양성 모두 향상
 - 🌟 <strong>주요 기여</strong>
   • PD → 편향 제거, PDA → 정제 점수 + 미래 인기 혼합하는 2‑스텝 설계<br>
-
-
 ---
 <span style='font-size:24px;color:#9C27B0'><strong>4️⃣ PDA 프레임워크 🌐</strong></span>
 | 단계 | 핵심 아이디어 |
@@ -170,7 +165,6 @@ def pda_explanation_tab():
 <span style='font-size:22px'><strong>5. Reference</strong></span>
 - **논문** : He et al., “Causal Intervention for Leveraging Popularity‑Bias”, WWW 2020  
 - **논문 요약 글** : <a href="https://working-periwinkle-d18.notion.site/Causal-Intervention-for-Leveraging-Popularity-Bias-in-Recommendation-1b98414a9d94807783a2ea69d0846d69" target="_blank">Notion 요약</a>
-
 """)
 
 

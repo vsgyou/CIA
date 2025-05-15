@@ -34,8 +34,8 @@ team_members = [
     {
         "name": "이상현",
         "affiliation": "LG유플러스 / 퍼스널Agent기술팀",
-        "role": "IPTV 추천시스템 및 예측 모델 개발",
-        "intro": "고객의 숨겨진 의도를 찾아 고객이 원하는 추천시스템을 개발하는 AI 엔지니어",
+        "role": "AI Scientist (Recommendation, Agentic AI)",
+        "intro": "IPTV 추천시스템 및 예측 모델 개발",
         "demo_title": "Agent4Rec: 고객 Agent를 활용한 추천시스템 시뮬레이션",
         "demo_desc": "고객 페르소나 기반 Agent를 활용한 추천 시뮬레이션을 통해, 추천 알고리즘 및 리랭킹 정책이 고객 특성과 어떻게 상호작용하며 영향을 미치는지를 인과적으로 분석",
         "github": "https://www.linkedin.com/in/sanghyeon/",
@@ -52,12 +52,22 @@ team_members = [
         "photo": "assets/profile_jiho.png"
     },
     {
+        "name": "황영산",
+        "affiliation": "프라이데이즈랩 / Product 팀",
+        "role": "Data Scientist",
+        "intro": "마케팅 솔루션 프로덕을 개발하고 있습니다",
+        "demo_title": "PDA: 인기도 편향 제거 및 활용 프레임워크",
+        "demo_desc": "아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
+        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
+        "photo": "assets/yeongsan.png"
+    },
+    {
         "name": "정지운",
         "affiliation": "취업준비생 / 추천 시스템 희망",
         "role": "추천 시스템 인기 편향 완화",
         "intro": "다양한 아이템이 포함된 리스트 제공을 통한 사용자 경험 개선",
         "demo_title": "CCL: 시스템에서 발생하는 노출 편향을 완화시키는 논문 구현",
-        "demo_desc": "**혼란변수(confounder)에 의해 발생하는 노출편향을 완화시키기 위해 **데이터 증강**을 통해 다양한 아이템이 노출된 상황을 시뮬레이션",
+        "demo_desc": "혼란변수(confounder)에 의해 발생하는 노출편향을 완화시키기 위해 데이터 증강을 통해 다양한 아이템이 노출된 상황을 시뮬레이션",
         "github": "https://www.linkedin.com/in/jeongjiun",
         "photo": "assets/jiun.png"
     },
@@ -70,16 +80,6 @@ team_members = [
         "demo_desc": "DICE 모델 구현 및 LLM 정보를 활용하는 DICE 추천 모델 개발 (추후 통합 예정)",
         "github": "https://www.linkedin.com/in/wonhyuk-jang-44a941b4",
         "photo": "assets/profile_wonhyuk.png"
-    },
-    {
-        "name": "황영산",
-        "affiliation": "프라이데이즈랩 / Product 팀",
-        "role": "Data Scientist",
-        "intro": "마케팅 솔루션 프로덕을 개발하고 있습니다",
-        "demo_title": "PDA: 인기도 편향 제거 및 활용 프레임워크",
-        "demo_desc": "아이템 인기가 사용자에게 미치는 편향을 제거하고 유용한 인기도를 활용합니다",
-        "github": "https://www.linkedin.com/in/yeongsan-hwang-23a10826a//",
-        "photo": "assets/yeongsan.png"
     }
     # ... 추가 구성원
 ]
@@ -151,7 +151,7 @@ def build_members():
         with gr.Row():
             with gr.Column(scale=3):  # 왼쪽: 텍스트
                 gr.Markdown("""
-                > 🎯 **CIA*는  
+                > 🎯 *CIA*는  
                 > 사용자가 콘텐츠를 **왜 선택했는지**,  
                 > 그리고 추천 시스템이 **왜 그걸 추천했는지**를 함께 분석합니다.  
                 >
@@ -165,15 +165,17 @@ def build_members():
             with gr.Column(scale=4):  # 오른쪽: 이미지
                 gr.Markdown("""
                 >           
-                >           
+                > 🐾 시청이력 속에 숨어 있는 다양한 의도
                 >
                 ><img src = "https://sanghyeon-recsys.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0762d424-f182-4525-a36d-7dfce0af78dc%2F5c51bc2c-b938-4d65-82b7-8775cae18ff2%2FUntitled.png?table=block&id=3a556962-bce5-4b88-b881-f3509c3e8b8b&spaceId=0762d424-f182-4525-a36d-7dfce0af78dc&width=1920&userId=&cache=v2" width="800px;"/> <br/>          
+                >
+                >
                 >
                 >
                 """)
         gr.Markdown("""
         ---
-        # CIA Agents 🕵️
+        # 🕵️ CIA Agents 
         """)
         gr.HTML(build_member_grid_html(team_members))
         gr.Markdown("""
@@ -224,42 +226,42 @@ def build_settings():
         gr.Slider(label="음량", minimum=0, maximum=100)
     return settings
 
-with gr.Blocks(css=".left-btn { text-align: left; display: flex; justify-content: flex-start; }") as demo:
+with gr.Blocks(css=""".left-btn { text-align: left; display: flex; white-space: pre-line; justify-content: flex-start; }""") as demo:
     gr.HTML(member_card_style())  # 스타일 먼저
     with gr.Row():
         with gr.Column(scale=1):
             gr.Image("./assets/cia_logo.png", show_label=False, container=False, height=150)
-            
+
             btn_members = gr.Button("🕵️ Meet the Agents", elem_classes=["left-btn"])
-            btn_agent4rec = gr.Button("🌐  <b>Agent4Rec: 고객 Agent 기반</b><br/>추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
-            btn_ccl = gr.Button("🔀  <b>CCL: Confounder에 의한</b><br/>노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
-            btn_pda = gr.Button("🔝  <b>PDA: PDA: 인기도 편향 제거 및 활용 </b><br/>프레임워크", elem_classes=["left-btn"])
-            btn_cor_summary = gr.Button("📄 <b>COR-G: 장기/단기 선호 분리 기반</b><br/> 인과적 추천 시스템 구현", elem_classes=["left-btn"])
-            btn_dice_rec = gr.Button("📄 <b>DICE & LLM Rec</b><br/> 논문 구현", elem_classes=["left-btn"])
+            btn_agent4rec = gr.Button("🌐 Agent4Rec: 고객 Agent 기반 추천시스템 평가 시뮬레이션", elem_classes=["left-btn"])
+            btn_cor_summary = gr.Button("📄 COR-G: 장기/단기 선호 분리 기반 인과적 추천 시스템 구현", elem_classes=["left-btn"])
+            btn_pda = gr.Button("🔝  PDA: 인기도 편향 제거 및 활용 프레임워크", elem_classes=["left-btn"])
+            btn_ccl = gr.Button("🔀  CCL: Confounder에 의한 노출 편향 완화 시뮬레이션", elem_classes=["left-btn"])
+            btn_dice_rec = gr.Button("📄 DICE & LLM Rec 논문 구현", elem_classes=["left-btn"])
             
         with gr.Column(scale=5):
             page_members = build_members()
             page_agent4rec = build_agent4rec()
-            page_ccl = build_ccl()
-            page_pda = build_pda()
             page_cor_summary = build_cor_summary()
+            page_pda = build_pda()
+            page_ccl = build_ccl()
             page_dice_rec = build_DICE_REC()
 
     def show_page(target):
         return {
             page_members: gr.update(visible=(target == "members")),
             page_agent4rec: gr.update(visible=(target == "agent4rec")),
-            page_ccl: gr.update(visible=(target == "ccl")),
-            page_pda: gr.update(visible=(target == "pda")),
             page_cor_summary: gr.update(visible=(target == "cor_summary")),
+            page_pda: gr.update(visible=(target == "pda")),
+            page_ccl: gr.update(visible=(target == "ccl")),
             page_dice_rec: gr.update(visible=(target == "dice_rec")),            
         }
 
-    btn_members.click(fn=lambda: show_page("members"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
-    btn_agent4rec.click(fn=lambda: show_page("agent4rec"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
-    btn_ccl.click(fn=lambda: show_page("ccl"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
-    btn_pda.click(fn=lambda: show_page("pda"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
-    btn_cor_summary.click(fn=lambda: show_page("cor_summary"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
-    btn_dice_rec.click(fn=lambda: show_page("dice_rec"), inputs=[], outputs=[page_members, page_agent4rec, page_ccl, page_pda, page_cor_summary, page_dice_rec])
+    btn_members.click(fn=lambda: show_page("members"), inputs=[], outputs=[page_members, page_agent4rec, page_cor_summary, page_pda, page_ccl, page_dice_rec])
+    btn_agent4rec.click(fn=lambda: show_page("agent4rec"), inputs=[], outputs=[page_members, page_agent4rec, page_cor_summary, page_pda, page_ccl, page_dice_rec])
+    btn_cor_summary.click(fn=lambda: show_page("cor_summary"), inputs=[], outputs=[page_members, page_agent4rec, page_cor_summary, page_pda, page_ccl, page_dice_rec])
+    btn_pda.click(fn=lambda: show_page("pda"), inputs=[], outputs=[page_members, page_agent4rec, page_cor_summary, page_pda, page_ccl, page_dice_rec])
+    btn_ccl.click(fn=lambda: show_page("ccl"), inputs=[], outputs=[page_members, page_agent4rec, page_cor_summary, page_pda, page_ccl, page_dice_rec])
+    btn_dice_rec.click(fn=lambda: show_page("dice_rec"), inputs=[], outputs=[page_members, page_agent4rec, page_cor_summary, page_pda, page_ccl, page_dice_rec])
 
 demo.launch()

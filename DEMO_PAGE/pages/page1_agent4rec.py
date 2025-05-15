@@ -190,6 +190,9 @@ RQ4_PROMPT = """
 
 분석 결과는 객관적인 수치와 인과적 해석을 함께 포함하고, 전문가 관점에서 전략적 제언 형태로 마무리해 주세요.
 """
+from openai import OpenAI
+
+client = OpenAI()
 
 def summarize_rq(prompt: str, str_summary: str, model="gpt-4o-mini-2024-07-18") -> str:
     messages = [
@@ -197,40 +200,57 @@ def summarize_rq(prompt: str, str_summary: str, model="gpt-4o-mini-2024-07-18") 
         {"role": "user", "content": prompt},
         {"role": "user", "content": f"분석 결과 데이터:\n{str_summary}"}
     ]
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=model,
         messages=messages,
         temperature=0.4,
         max_tokens=800
     )
-    return response['choices'][0]['message']['content']
+    return response.choices[0].message.content
 
 SIM_AGENT_PROMPT = """
-다음은 고객들의 영화 취향을 조사한 내용입니다.
-데이터 A는 키워드 목록이고, 데이터 B는 [avatar_id, taste, resaon]으로 구성되어 있습니다.
+당신은 고객의 영화 취향을 분석하여 가장 유사한 아바타를 찾는 추천 시스템입니다.
 
-데이터 A의 키워드를 기준으로 데이터 B에서 가장 유사한 아바타 1개를 찾아 avatar_id 값만 답변하세요.
+[입력]
+- 키워드 리스트: 데이터 A
+- 고객 후보 목록: 데이터 B (형식: avatar_id, taste, reason)
 
-답변 예시: 1
-답변 예시: 29
+[목표]
+- 데이터 A의 키워드를 기준으로, 데이터 B 중에서 가장 취향이 유사한 아바타 1명을 고르세요.
+
+[출력 조건]
+- **숫자 하나만** 출력하세요.
+- **설명 없이 숫자만** 출력하세요.
+
+[예시 출력]
+23
+87
+4
+
+이제 응답을 시작하세요.
 """
+import re
 
-
-def get_sim_agent(prompt: str, data_a: str, data_b: str, model="gpt-4o-mini-2024-07-18") -> str:
+def get_sim_agent(prompt, keywords, avatar_data):
     messages = [
-        {"role": "system", "content": "당신은 추천 시스템 전문가입니다. 아래 데이터를 비교하여 유사한 취향을 가진 아바타 id를 답하세요."},
-        {"role": "user", "content": prompt},
-        {"role": "user", "content": f"데이터 A 키워드:\n{data_a}"},
-        {"role": "user", "content": f"데이터 B avatar 데이터:\n{data_b}"}
+        {"role": "system", "content": prompt},
+        {"role": "user", "content": f"데이터 A: {', '.join(keywords)}"},
+        {"role": "user", "content": f"데이터 B:\n{avatar_data}"}
     ]
-    response = openai.ChatCompletion.create(
-        model=model,
+    response = client.chat.completions.create(
+        model="gpt-4o-mini-2024-07-18",
         messages=messages,
         temperature=0.2,
-        max_tokens=800
+        max_tokens=50,
     )
-    return response['choices'][0]['message']['content']
-
+    content = response.choices[0].message.content.strip()
+    
+    # 숫자만 추출 (예: "가장 유사한 아바타는 12입니다." → 12)
+    match = re.search(r"\d+", content)
+    if match:
+        return int(match.group(0))
+    else:
+        raise ValueError(f"응답에서 avatar_id를 찾을 수 없습니다: {content}")
 
 
 def summarize_rq1_overall(df):
@@ -314,21 +334,35 @@ def prepare_page_funnel_by_rerank(df):
             })
     return pd.DataFrame(result)
 
+
 def prepare_trait_average_by_page(df, trait_name):
     df_mf = df[df["policy"] == "MF"]
     result = []
+
+    # trait별 매핑 정의
+    trait_map = {
+        "activity": {"적게봄":1, "가끔봄":2, "자주봄":3},
+        "conformity": {"독립형":1, "균형형":2, "동조형":3},
+        "diversity": {"취향형":1, "균형형":2, "탐험형":3}
+    }
+
+    if trait_name not in trait_map:
+        raise ValueError(f"지원되지 않는 trait_name: {trait_name}")
+
     for rerank in df_mf["rerank"].unique():
         for page in range(1, 6):
             subset = df_mf[(df_mf["rerank"] == rerank) & (df_mf["page"] == page)]
             if subset.empty:
                 continue
+            trait_values = subset[trait_name].map(trait_map[trait_name])
             result.append({
                 "rerank": rerank,
                 "page": page,
                 "trait": trait_name,
-                "trait_avg": subset[trait_name].map({"적게봄":1, "가끔봄":2, "자주봄":3, "독립형":1, "균형형":2, "동조형":3, "취향형":1, "균형형":2, "탐험형":3}).mean()
+                "trait_avg": trait_values.mean()
             })
     return pd.DataFrame(result)
+
 
 def plot_funnel_customer_count_by_rerank(df):
     df_rerank = prepare_page_funnel_by_rerank(df)
@@ -430,7 +464,7 @@ def customer_input_ui():
             label="동조 성향 (Conformity)"
         )
         diversity = gr.Radio(
-            ["취향형", "균형형", "다양형"],
+            ["취향형", "균형형", "탐험형"],
             label="다양성 성향 (Diversity)"
         )
 
@@ -447,7 +481,7 @@ def customer_input_ui():
             label="추천 알고리즘"
         )
         rerank = gr.Radio(
-            ["Prefer", "Popular", "Diversity"],
+            ["Prefer", "Pop", "Diversify"],
             label="리랭킹 방식"
         )
 
@@ -466,6 +500,7 @@ def find_most_similar_avatar(policy, rerank, user_traits, taste_keywords, df_use
     else:
         return -1 # 취향 조합 없음
     return -1
+
 def parse_agent_log(log_str):
     """
     로그를 '페이지', '응답', '인터뷰' 기준으로 나눠 문자열 리스트 반환
@@ -505,34 +540,34 @@ def parse_agent_log(log_str):
 
 
 def page1_agent4rec_ui(df,df_user, df_log, policy_list):
+    gr.Markdown("""
+    ## 🌐 Agent4Rec: 고객 Agent 기반 추천시스템 평가 시뮬레이션
+    """)
     with gr.Tabs():
         with gr.Tab("0️⃣ Agent4Rec 및 데모 소개"):
-
             gr.Image("./assets/agent4rec_main.png", show_label=False, container=False, height=350)
             gr.Markdown("""
-            ## ℹ️ 추천 시뮬레이션 데모 소개
-            
             이 데모는 **고객 페르소나 기반 Agent**를 활용한 추천 시뮬레이션을 통해,  
             추천 알고리즘 및 리랭킹 정책이 **고객 특성과 어떻게 상호작용하며 영향을 미치는지** 를 분석합니다.
 
             특히 실제 A/B 테스트가 어려운 환경에서도,  
-            **정책만 다르게 적용한 반사실적 시나리오(Counterfactual Setup)** 를 통해  
+            **추천 알고리즘만 다르게 적용한 반사실적 시나리오(Counterfactual Setup)** 를 통해  
             **정책 효과(Policy Effect)의 인과적 해석(Causal Interpretation)** 을 가능하게 하도록 설계되었습니다.
             
             ### 🧪 시뮬레이션 실험의 인과적 구조
 
-            - 동일한 고객군을 기반으로 다양한 추천 정책(policy)과 리랭킹 전략(rerank)을 적용
+            - 동일한 고객군을 기반으로 다양한 추천 정책(policy = 추천 알고리즘)과 리랭킹 전략(rerank)을 적용
             - 이를 통해 **정책이 없었을 경우와 있었을 경우의 차이(uplift)** 를 추정
             - 고객의 특성(activity, conformity, diversity)을 기반으로 **이질적 효과(Heterogeneous Treatment Effect, HTE)** 분석 가능   
             
             ### 📊 데모 구성
 
-            1. **정책 효과 분석 (RQ1–3)**  
-            > "*정책에 따라 고객의 반응이 어떻게 달라지고 어떤 정책이 더 효과적인가?"  
+            1. **추천 알고리즘 효과 분석 (RQ1–3)**  
+            > "**정책에 따라 고객의 반응이 어떻게 달라지고 어떤 정책이 더 효과적인가?**"  
             동일 고객군을 대상으로 다양한 추천정책을 적용한 후 **만족도 및 선택률 차이(uplift)** 분석
 
             2. **리랭킹 퍼널 분석 (RQ4)**  
-            > "리랭킹 전략이 고객 이탈률 및 페이지 이동에 어떤 영향을 주는가?"  
+            > "**리랭킹 전략이 고객 이탈률 및 페이지 이동에 어떤 영향을 주는가?**"  
             각 페이지별 이탈률과 만족도를 기준으로 고객 흐름을 **퍼널 구조로 시각화**
 
             3. **시뮬레이션 시연**  
@@ -542,7 +577,7 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
             ### 🚀 기존 Agent4Rec 대비 개선 사항
             
             기존 시뮬레이션 프레임워크를 확장하여 더욱 정교한 고객 Agent를 구축하였고, 
-            실제 서비스 정책에 따른 성과(uplift)의 인과적 분석을 통해 정교한 정책 비교와 설명이 가능하도록 개선했습니다.
+            실제 서비스 추천 알고리즘에 따른 성과(uplift)의 인과적 분석을 통해 정교한 정책 비교와 설명이 가능하도록 개선했습니다.
             - 고객 특성(활동성/동조성/다양성) 추정치를 확률값으로 직접 반영해 Agent의 선택 행동이 실제 로그에 더 유사해졌으며, 시뮬레이션 내 평균 선택률(CTR)이 기존 대비 55% 증가하였습니다.
             - 실제 서비스 환경을 고려한 **리랭킹 방식(policy reranking)** 적용 및 비교 실험 진행 (인기도, 다양성 리랭킹 추가, 가격순 리랭킹 확장 가능)
               - 총 12개 실험 조합: `4개 추천 정책` × `3개 리랭킹 방식`
@@ -631,9 +666,9 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
               - `Random`, `Most Popular`, `MF`, `LightGCN`, `MultVAE` 등 다양한 정책 내장  
               - 외부 추천 모델을 쉽게 연동할 수 있는 확장 구조 제공
             """)
-        with gr.Tab("1️⃣ 정책 효과 분석 대시보드"):
+        with gr.Tab("1️⃣ 추천 알고리즘 효과 분석 대시보드"):
             gr.Markdown("""
-            ## 📊 정책 효과 분석 대시보드
+            ## 📊 추천 알고리즘 효과 분석 대시보드
 
             본 대시보드는 추천 정책이 고객 특성과 어떻게 상호작용하는지를 **시뮬레이션 기반 인과적 비교** 방식으로 분석합니다.  
             동일한 고객 집단에 대해 다양한 정책을 적용하고 그 반응을 비교함으로써, 마치 A/B 테스트처럼 **정책 간 효과(uplift)**를 파악할 수 있습니다.
@@ -641,7 +676,7 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
             실험은 아래 세 가지 인과적 질문(RQ)에 기반합니다:
             """)
 
-            gr.Markdown("### 🔹 RQ1. 정책별 만족도 차이 (고객 특성별)")
+            gr.Markdown("### 🔹 RQ1. 추천 알고리즘별 만족도 차이 (고객 특성별)")
             gr.Markdown("- 질문: 정책마다 고객 특성에 따라 만족도가 얼마나 달라지는가?")
             gr.Markdown("- 분석: Violin + Scatter plot을 통해 만족도 증감 및 선택률을 비교합니다.")
             for trait in ["activity", "conformity", "diversity"]:
@@ -660,7 +695,7 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
 
                 summary_button.click(fn=run_summary_rq, inputs=[], outputs=summary_output)
 
-            gr.Markdown("### 🔹 RQ2. 정책 간 uplift 비교")
+            gr.Markdown("### 🔹 RQ2. 추천 알고리즘 간 uplift 비교")
             gr.Markdown("- 질문: 특정 고객 그룹에서 어떤 정책이 더 효과적인가?")
             gr.Markdown("- 분석: 각 trait 값별로 정책 간 uplift 차이를 Bar chart로 시각화합니다.")
             for trait in ["activity", "conformity", "diversity"]:
@@ -680,7 +715,7 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
 
 
 
-            gr.Markdown("### 🔹 RQ3. 정책의 민감도 차이")
+            gr.Markdown("### 🔹 RQ3. 고객 특성별 추천 알고리즘 민감도 차이")
             gr.Markdown("- 질문: 어떤 정책이 고객 특성에 더 민감하게 반응하는가?")
             gr.Markdown("- 분석: Radar chart를 통해 각 정책별로 trait 편차를 시각화합니다.")
             radar = plot_policy_variation_radar(df)
@@ -765,30 +800,25 @@ def page1_agent4rec_ui(df,df_user, df_log, policy_list):
                 log_str = log_df.iloc[0]["log"]
                 parsed_sections = parse_agent_log(log_str)
 
-                summary = f"🎯 유사 avatar ID: {avatar_id}\n📌 추천 정책: {policy} / 리랭킹: {rerank}"
-                outputs = []
-                for i in range(5):
-                    if i < len(parsed_sections):
-                        outputs.append(gr.update(value=parsed_sections[i], visible=True))
-                    else:
-                        outputs.append(gr.update(visible=False))
+                # 로그 내용을 Markdown 문자열로 변환
+                markdown_output = "\n\n".join([
+                    f"### {i+1}. {section if section.strip() else '_(내용 없음)_'}"
+                    for i, section in enumerate(parsed_sections)
+                ])
 
-                return summary, *outputs
+                summary = f"🎯 유사 avatar ID: {avatar_id}\n📌 추천 알고리즘: {policy} / 리랭킹: {rerank}"
+
+                return summary, markdown_output
+
 
             output_summary = gr.Markdown(label="🧠 결과 요약")
-    
-            # 최대 5개 섹션만 예시로 만든다고 가정
-            output_log1 = gr.Markdown(visible=False)
-            output_log2 = gr.Markdown(visible=False)
-            output_log3 = gr.Markdown(visible=False)
-            output_log4 = gr.Markdown(visible=False)
-            output_log5 = gr.Markdown(visible=False)
-            
-            log_outputs = [output_log1, output_log2, output_log3, output_log4, output_log5]
+            output_logs = gr.Markdown(label="📜 시뮬레이션 로그")
+
+
             submit_btn.click(
                 fn=run_simulation,
                 inputs=[activity, conformity, diversity, taste_keywords, policy, rerank],
-                outputs=[output_summary] + log_outputs
+                outputs=[output_summary, output_logs]
             )
 
 
