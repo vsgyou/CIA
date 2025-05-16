@@ -1,7 +1,16 @@
+
+from huggingface_hub import hf_hub_download
+import numpy as np
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch
-import numpy as np
+
+# huggingface repo
+REPO_ID = "jihji/cor-g-yelp-model"
+SUBFOLDER = "yelp"
+
+def load_from_hub(filename):
+    return hf_hub_download(repo_id=REPO_ID, filename=filename, subfolder=SUBFOLDER, repo_type="model")
 
 class COR_G(nn.Module):
     """

@@ -6,7 +6,13 @@ from dotenv import load_dotenv
 import gradio as gr
 from pages.page7_cor_model import COR_G
 from openai import OpenAI
+from huggingface_hub import hf_hub_download
 
+REPO_ID = "jihji/cor-g-yelp-model"
+SUBFOLDER = "yelp"
+
+def load_from_hub(filename):
+    return hf_hub_download(repo_id=REPO_ID, filename=filename, subfolder=SUBFOLDER, repo_type="model")
 
 ######################  1. 논문 소개 탭 ###################### 
 def render_tab_paper_summary():
@@ -153,13 +159,12 @@ def render_tab_cor_agent():
 
         def generate_recommendation(user_id):
             # 경로 설정
-            base_path = "./data/page7_data_n_model/yelp/"
-            weight_path = "./data/page7_data_n_model/cor_g_weights.pth"
+            weight_path = load_from_hub("cor_g_weights.pth")
 
             # 데이터 로드
-            user_feat_tensor = torch.FloatTensor(np.load(os.path.join(base_path, "user_feature.npy")))
-            item_feat_tensor = torch.FloatTensor(np.load(os.path.join(base_path, "item_feature.npy")))
-            interaction_matrix = np.load(os.path.join(base_path, "training_list.npy"), allow_pickle=True)
+            user_feat_tensor = torch.FloatTensor(np.load(load_from_hub("user_feature.npy")))
+            item_feat_tensor = torch.FloatTensor(np.load(load_from_hub("item_feature.npy")))
+            interaction_matrix = np.load(load_from_hub("training_list.npy"), allow_pickle=True)
 
             # Sparse interaction matrix
             n_users = user_feat_tensor.shape[0]
