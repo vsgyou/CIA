@@ -159,13 +159,9 @@ def render_tab_cor_agent():
 
         def generate_recommendation(user_id):
             # 경로 설정
-            # weight_path = "./data/page7_data_n_model/cor_g_weights.pth"
             weight_path = load_from_hub("cor_g_weights.pth")
 
             # 데이터 로드
-            # user_feat_tensor = torch.FloatTensor(np.load(os.path.join(base_path, "user_feature.npy")))
-            # item_feat_tensor = torch.FloatTensor(np.load(os.path.join(base_path, "item_feature.npy")))
-            # interaction_matrix = np.load(os.path.join(base_path, "training_list.npy"), allow_pickle=True)
             user_feat_tensor = torch.FloatTensor(np.load(load_from_hub("user_feature.npy")))
             item_feat_tensor = torch.FloatTensor(np.load(load_from_hub("item_feature.npy")))
             interaction_matrix = np.load(load_from_hub("training_list.npy"), allow_pickle=True)
